@@ -1,0 +1,160 @@
+/* Container styling to sit beautifully inside CommonPage */
+.rbac-container {
+  padding: 32px 40px;
+  color: #ffffff;
+  background-color: #0c0f19; /* Main dark page background */
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Header Sections */
+.rbac-header {
+  margin-bottom: 28px;
+}
+
+.rbac-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.rbac-subtitle {
+  color: #5d6578;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Table Card Layout */
+.rbac-table-card {
+  background-color: #1b2030; /* Table panel dark background */
+  border-radius: 6px;
+  border: 1px solid #232a3e;
+  overflow: hidden;
+}
+
+/* Top bar of the table card with title */
+.table-top-bar {
+  padding: 18px 24px;
+  border-bottom: 1px solid #232a3e;
+}
+
+.table-top-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0aec0;
+  margin: 0;
+}
+
+/* Responsive Table Grid */
+.rbac-table-responsive {
+  overflow-x: auto;
+}
+
+.rbac-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Header Columns */
+.rbac-table th {
+  background-color: #161a27;
+  color: #8b94a5;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #232a3e;
+}
+
+/* Alignment of text inside Name column to match mockup */
+.rbac-table th.col-name,
+.rbac-table td.col-name {
+  padding-left: 120px; /* Custom indentation matching image layout positioning */
+}
+
+/* Checkbox Column Centered Layouts */
+.col-center {
+  text-align: center;
+}
+
+/* Table rows and body cells */
+.rbac-table td {
+  padding: 16px 24px;
+  font-size: 13px;
+  color: #cbd5e1;
+  border-bottom: 1px solid #232a3e;
+}
+
+.rbac-table tbody tr:hover {
+  background-color: rgba(35, 42, 62, 0.4);
+}
+
+/* Monospace font styles for Name matching previous screens */
+.font-mono {
+  font-family: 'SFMono-Regular', Consolas, "Liberation Mono", Courier, monospace;
+  letter-spacing: 0.3px;
+}
+
+/* -----------------------------------------
+   CUSTOM PIXEL-PERFECT CHECKBOX STYLING
+----------------------------------------- */
+.custom-checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hide default checkbox */
+.custom-checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create custom box matching the empty grey blocks in the mockup */
+.checkmark {
+  height: 18px;
+  width: 18px;
+  background-color: #7d8495; /* Dusty grey color for empty check boxes in mockup */
+  border-radius: 2px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  display: inline-block;
+  position: relative;
+}
+
+/* Checked state: matching checked checkboxes styling */
+.custom-checkbox-container input:checked ~ .checkmark {
+  background-color: #cbd5e1; /* Off-white/light-grey checked background */
+}
+
+/* Create check indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show indicator when checked */
+.custom-checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Custom check icon lines (dark checkmark on white/grey background) */
+.custom-checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #1b2030; /* Dark check color matching row background */
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}

@@ -1,0 +1,183 @@
+/* Container styling to align with CommonPage */
+.device-container {
+  padding: 32px 40px;
+  color: #ffffff;
+  background-color: #0c0f19; /* Main dark background */
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.device-header {
+  margin-bottom: 28px;
+}
+
+.device-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.device-subtitle {
+  color: #5d6578;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Card layout for table */
+.device-table-card {
+  background-color: #1b2030; /* Table panel background */
+  border-radius: 6px;
+  border: 1px solid #232a3e;
+  overflow: hidden;
+}
+
+/* Top bar of the table card with title and dropdown */
+.table-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid #232a3e;
+}
+
+.table-top-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0aec0;
+  margin: 0;
+}
+
+/* Dropdown styling */
+.device-select {
+  background-color: #161a27;
+  color: #a0aec0;
+  border: 1px solid #2d3748;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Removes default browser styling */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 32px;
+}
+
+.device-select:focus {
+  border-color: #4a5568;
+}
+
+/* Table Responsive Container */
+.device-table-responsive {
+  overflow-x: auto;
+}
+
+.device-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Header Columns matching exact spacing */
+.device-table th {
+  background-color: #161a27;
+  color: #8b94a5;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #232a3e;
+}
+
+/* Table rows & body cells */
+.device-table td {
+  padding: 16px 24px;
+  font-size: 13px;
+  color: #a0aec0;
+  border-bottom: 1px solid #232a3e;
+}
+
+.device-table tbody tr:hover {
+  background-color: rgba(35, 42, 62, 0.4);
+}
+
+/* Monospace font styles for identifiers */
+.font-mono {
+  font-family: 'SFMono-Regular', Consolas, "Liberation Mono", Courier, monospace;
+  letter-spacing: 0.3px;
+}
+
+/* Connectivity Status badges */
+.conn-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.conn-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Connection States from your image (Active, Inactive, Offline/Dashes) */
+.conn-active {
+  color: #10b981;
+}
+.dot-active {
+  background-color: #10b981;
+}
+
+.conn-inactive {
+  color: #b45309; /* Darker orange/amber for orange inactive state */
+}
+.dot-inactive {
+  background-color: #d97706;
+}
+
+.conn-critical {
+  color: #ef4444; /* Darker red for red inactive state */
+}
+.dot-critical {
+  background-color: #ef4444;
+}
+
+.conn-none {
+  color: #4a5568;
+}
+
+/* Footer Pagination matching layout */
+.device-pagination {
+  padding: 16px 24px;
+  background-color: #1b2030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #8b94a5;
+}
+
+.pagination-btn {
+  background: none;
+  border: none;
+  color: #5d6578;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 8px;
+  transition: color 0.15s ease;
+}
+
+.pagination-btn:hover {
+  color: #ffffff;
+}
