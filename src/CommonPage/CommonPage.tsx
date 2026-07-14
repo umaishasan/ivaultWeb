@@ -1,5 +1,12 @@
 import React, { type ReactNode, useState, useRef, useEffect } from 'react';
 import "./CommonPage.css"; // Direct standard CSS import
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import PersonIcon from '@mui/icons-material/Person';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+import AddModeratorIcon from '@mui/icons-material/AddModerator';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 interface CommonPageProps {
   children?: ReactNode;
@@ -50,7 +57,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({
         <div className="leftHeader">
           <div className="logoArea">
             <span className="logoIcon">🛡️</span>
-            <span>SAFEGUARD</span>
+            <span>i-Vault</span>
           </div>
           <div className="breadcrumbs">
             <span>Manufacturer Portal</span>
@@ -60,7 +67,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({
 
         <div className="rightHeader">
           <div className="notificationIcon" title="Notifications">
-            🔔
+            <NotificationsIcon style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
           </div>
           
           {/* Wrapper with ref to handle click-outside */}
@@ -76,13 +83,9 @@ export const CommonPage: React.FC<CommonPageProps> = ({
 
             {/* Floating Edit Profile Dropdown */}
             {isDropdownOpen && (
-              <div className="profileDropdown">
+              <div className="profileDropdown" >
                 <button className="dropdownItem" onClick={handleEditProfile}>
-                  <svg className="dropdownIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                    <line x1="16" y1="11" x2="22" y2="11"></line>
-                  </svg>
+                  <DriveFileRenameOutlineIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
                   Edit Profile
                 </button>
               </div>
@@ -100,16 +103,29 @@ export const CommonPage: React.FC<CommonPageProps> = ({
         <aside className="sidebar">
           <div className="navLinks">
             <a href="#dashboard" className="navLink activeNavLink">
-              <span>📊</span> Dashboard
+              <span>
+                <DashboardIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+              </span> Dashboard
             </a>
             <a href="#devices" className="navLink">
-              <span>📱</span> Devices
+              <span>
+                <PhoneAndroidIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+              </span> Devices
             </a>
             <a href="#users" className="navLink">
-              <span>👤</span> Users
+              <span>
+                <PersonIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+              </span> Users
             </a>
             <a href="#health" className="navLink">
-              <span>⚡</span> System Health
+              <span>
+                <MonitorHeartIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+              </span> System Health
+            </a>
+            <a href="#rbac" className="navLink">
+              <span>
+                <AddModeratorIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+              </span> RBAC
             </a>
           </div>
 

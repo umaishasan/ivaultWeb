@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Notification.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // Initial state containing notifications as represented in the mockup
 const initialNotifications = [
@@ -25,7 +26,8 @@ export function NotificationContent() {
   };
 
   return (
-    <div className="notification-container">
+    <CommonPage>
+      <div className="notification-container">
       {/* Header section */}
       <div className="notification-header">
         <h1 className="notification-title">Notification</h1>
@@ -66,7 +68,8 @@ export function NotificationContent() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 

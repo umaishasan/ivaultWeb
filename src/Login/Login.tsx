@@ -1,13 +1,16 @@
 import { useState, type FormEvent } from 'react'
+import { useNavigate } from "react-router-dom"
 import './login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     console.log('Login attempt:', { email, password })
+    navigate('/dashboard')
   }
 
   return (
@@ -19,7 +22,7 @@ function Login() {
             <span className="lock-shape" />
           </div>
           <div>
-            <p className="brand-label">SAFEGUARD</p>
+            <p className="brand-label">i-Vault</p>
             <p className="brand-subtitle">Secure your Asset</p>
           </div>
         </header>

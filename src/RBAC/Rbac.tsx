@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './RBAC.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // Initial state matching your image data
 const initialUserPermissions = [
@@ -35,7 +36,8 @@ export function RBACContent() {
   };
 
   return (
-    <div className="rbac-container">
+    <CommonPage>
+      <div className="rbac-container">
       {/* Header section */}
       <div className="rbac-header">
         <h1 className="rbac-title">Role Base Access Control</h1>
@@ -95,7 +97,8 @@ export function RBACContent() {
           </table>
         </div>
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 

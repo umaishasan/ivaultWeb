@@ -1,5 +1,6 @@
 import React from 'react';
 import './dashboard.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // SVG Icons directly added for a modern clean look matching the UI Mockup
 const ShieldIcon = () => (
@@ -25,96 +26,98 @@ const safeData = [
 
 export function DashboardContent() {
   return (
-    <div className="dashboard-container">
-      {/* Upper Titles */}
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">Manufacturer Admin Dashboard</h1>
-        <p className="dashboard-subtitle">Overview and distribution statistics of your registered safes.</p>
-      </div>
+    <CommonPage>
+        <div className="dashboard-container">
+          {/* Upper Titles */}
+          <div className="dashboard-header">
+            <h1 className="dashboard-title">Manufacturer Admin Dashboard</h1>
+            <p className="dashboard-subtitle">Overview and distribution statistics of your registered safes.</p>
+          </div>
 
-      {/* Stats Section */}
-      <div className="stats-grid">
-        {/* Connectivity Status Card */}
-        <div className="stat-card">
-          <h3 className="card-title">Connectivity Status</h3>
-          <div className="status-sub-group">
-            <div className="sub-value-wrapper">
-              <span className="stat-value">720</span>
-              <span className="status-badge badge-active">
-                <span className="status-dot dot-active"></span> ACTIVE
-              </span>
+          {/* Stats Section */}
+          <div className="stats-grid">
+            {/* Connectivity Status Card */}
+            <div className="stat-card">
+              <h3 className="card-title">Connectivity Status</h3>
+              <div className="status-sub-group">
+                <div className="sub-value-wrapper">
+                  <span className="stat-value">720</span>
+                  <span className="status-badge badge-active">
+                    <span className="status-dot dot-active"></span> ACTIVE
+                  </span>
+                </div>
+                <div className="sub-value-wrapper">
+                  <span className="stat-value" style={{ color: '#d1d5db' }}>130</span>
+                  <span className="status-badge badge-inactive">
+                    <span className="status-dot dot-inactive"></span> INACTIVE
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="sub-value-wrapper">
-              <span className="stat-value" style={{ color: '#d1d5db' }}>130</span>
-              <span className="status-badge badge-inactive">
-                <span className="status-dot dot-inactive"></span> INACTIVE
-              </span>
+
+            {/* Total Safes Card */}
+            <div className="stat-card">
+              <h3 className="card-title">Total Safes</h3>
+              <div className="card-value-group">
+                <span className="stat-value">850</span>
+              </div>
+              <div className="card-icon-container">
+                <ShieldIcon />
+              </div>
+            </div>
+
+            {/* Total Users Card */}
+            <div className="stat-card">
+              <h3 className="card-title">Total Users</h3>
+              <div className="card-value-group">
+                <span className="stat-value" style={{ marginRight: '6px' }}>👥</span>
+                <span className="stat-value">980</span>
+              </div>
+              <div className="card-icon-container">
+                <UserIcon />
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Table Section */}
+          <div className="table-section">
+            <h2 className="table-section-title">Safe Registration and Firmware Version Distribution</h2>
+            <div className="table-responsive">
+              <table className="custom-table">
+                <thead>
+                  <tr>
+                    <th>Safe ID</th>
+                    <th>Registration Date</th>
+                    <th>Connection Status</th>
+                    <th>Firmware Status</th>
+                  </tr>
+                </thead>
+                <tbody className="font-mono">
+                  {safeData.map((safe, index) => (
+                    <tr key={index}>
+                      <td style={{ color: '#ffffff', fontWeight: 500 }}>{safe.id}</td>
+                      <td style={{ color: '#8b94a5' }}>{safe.date}</td>
+                      <td>
+                        <span className={`status-pill ${safe.status === 'Online' ? 'pill-online' : 'pill-offline'}`}>
+                          <span className={`status-dot ${safe.status === 'Online' ? 'dot-active' : 'dot-inactive'}`} style={{ marginRight: '8px' }}></span>
+                          {safe.status}
+                        </span>
+                      </td>
+                      <td style={{ color: '#8b94a5' }}>{safe.firmware}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Table Pagination */}
+            <div className="pagination-container">
+              <button className="pagination-btn">❬</button>
+              <span>Page 1 to 50</span>
+              <button className="pagination-btn">❭</button>
             </div>
           </div>
         </div>
-
-        {/* Total Safes Card */}
-        <div className="stat-card">
-          <h3 className="card-title">Total Safes</h3>
-          <div className="card-value-group">
-            <span className="stat-value">850</span>
-          </div>
-          <div className="card-icon-container">
-            <ShieldIcon />
-          </div>
-        </div>
-
-        {/* Total Users Card */}
-        <div className="stat-card">
-          <h3 className="card-title">Total Users</h3>
-          <div className="card-value-group">
-            <span className="stat-value" style={{ marginRight: '6px' }}>👥</span>
-            <span className="stat-value">980</span>
-          </div>
-          <div className="card-icon-container">
-            <UserIcon />
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Table Section */}
-      <div className="table-section">
-        <h2 className="table-section-title">Safe Registration and Firmware Version Distribution</h2>
-        <div className="table-responsive">
-          <table className="custom-table">
-            <thead>
-              <tr>
-                <th>Safe ID</th>
-                <th>Registration Date</th>
-                <th>Connection Status</th>
-                <th>Firmware Status</th>
-              </tr>
-            </thead>
-            <tbody className="font-mono">
-              {safeData.map((safe, index) => (
-                <tr key={index}>
-                  <td style={{ color: '#ffffff', fontWeight: 500 }}>{safe.id}</td>
-                  <td style={{ color: '#8b94a5' }}>{safe.date}</td>
-                  <td>
-                    <span className={`status-pill ${safe.status === 'Online' ? 'pill-online' : 'pill-offline'}`}>
-                      <span className={`status-dot ${safe.status === 'Online' ? 'dot-active' : 'dot-inactive'}`} style={{ marginRight: '8px' }}></span>
-                      {safe.status}
-                    </span>
-                  </td>
-                  <td style={{ color: '#8b94a5' }}>{safe.firmware}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Table Pagination */}
-        <div className="pagination-container">
-          <button className="pagination-btn">❬</button>
-          <span>Page 1 to 50</span>
-          <button className="pagination-btn">❭</button>
-        </div>
-      </div>
-    </div>
+    </CommonPage>
   );
 }

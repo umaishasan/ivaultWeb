@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SystemHealth.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // Mock Data from the System Health Image
 const systemData = [
@@ -39,7 +40,8 @@ export function SystemHealthContent() {
   };
 
   return (
-    <div className="health-container">
+    <CommonPage>
+      <div className="health-container">
       {/* Page Title Header */}
       <div className="health-header">
         <h1 className="health-title">System Health</h1>
@@ -124,7 +126,8 @@ export function SystemHealthContent() {
           </table>
         </div>
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 

@@ -48,6 +48,7 @@
 }
 
 .breadcrumbs {
+  padding-left: 110px;
   font-size: 0.85rem;
   color: #64748b;
 }
@@ -144,9 +145,24 @@
   cursor: pointer;
 }
 
+.navlinkIcon{
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover .navlinkIcon {
+  color: #2A65E9; /* Hover karne par sirf icon purple hoga */
+}
+
+/* 2. Jab navLink ACTIVE ho, to uske andar ke icon ka color */
+.activeNavLink .navlinkIcon {
+  color: #2A65E9 !important; /* Active state mein sirf icon purple rahega */
+}
+
 .navLink:hover, .activeNavLink {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.3);
+
 }
 
 .sidebarFooter {
@@ -162,7 +178,7 @@
 .sidebarFooterEmail {
   font-size: 0.75rem;
   color: #94a3b8;
-  margin-top: 2px;
+  margin-top: 0%;
 }
 
 /* --- CONTENT AREA & FOOTER --- */
@@ -222,7 +238,7 @@
   position: absolute;
   top: 42px; /* Standard navbar alignment below the avatar */
   right: 0;
-  background-color: #5d75a8; /* Dynamic semi-transparent blue hue matching image */
+  background-color: #122269; /* Dynamic semi-transparent blue hue matching image */
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 6px;
   min-width: 190px;
@@ -250,9 +266,14 @@
   transition: background-color 0.15s ease;
 }
 
+.dropdownItem:hover .navlinkIcon {
+  color: #2A65E9; /* Hover karne par sirf icon purple hoga */
+}
+
 /* Item hover state highlighting */
 .dropdownItem:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* SVG icon scale consistency */

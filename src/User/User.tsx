@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './user.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // Exact mock data according to your Users image
 const initialUsers = [
@@ -26,7 +27,8 @@ export function UserContent() {
   });
 
   return (
-    <div className="user-container">
+    <CommonPage>
+      <div className="user-container">
       {/* Header section */}
       <div className="user-header">
         <h1 className="user-title">Users</h1>
@@ -95,7 +97,8 @@ export function UserContent() {
           <button className="pagination-btn">❭</button>
         </div>
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 

@@ -20,7 +20,7 @@
 .login-page {
   position: relative;
   z-index: 1;
-  width: min(100%, 420px);
+  width: min(100%, 520px);
   padding: 32px 28px 24px;
   box-sizing: border-box;
   color: #f5f7ff;
@@ -108,7 +108,7 @@
 }
 
 .login-form input {
-  width: 100%;
+  width: 90%;
   padding: 15px 18px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -130,8 +130,8 @@
 }
 
 .login-button {
-  width: 100%;
-  margin-top: 4px;
+  width: 90%;
+  margin-top: 30px;
   padding: 16px 18px;
   border: none;
   border-radius: 999px;
@@ -148,12 +148,20 @@
   box-shadow: 0 16px 30px rgba(31, 69, 171, 0.32);
 }
 
+/* Yahan tabdeeli ki gayi hai */
 .login-footer {
-  margin-top: 24px;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 520px;
+  text-align: center;
   padding: 0 4px;
   color: #7e88b2;
   font-size: 12px;
   line-height: 1.7;
+  z-index: 10;
 }
 
 @media (max-width: 520px) {

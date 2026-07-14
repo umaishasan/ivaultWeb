@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './device.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 // Exact mock data according to your Devices image
 const initialDevices = [
@@ -49,7 +50,8 @@ export function DeviceContent() {
   };
 
   return (
-    <div className="device-container">
+    <CommonPage>
+      <div className="device-container">
       {/* Header section */}
       <div className="device-header">
         <h1 className="device-title">Devices</h1>
@@ -102,7 +104,8 @@ export function DeviceContent() {
           <button className="pagination-btn">❭</button>
         </div>
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './EditProfile.css';
+import { CommonPage } from '../CommonPage/CommonPage';
 
 export function EditProfileContent() {
   const [email, setEmail] = useState('');
@@ -17,11 +18,12 @@ export function EditProfileContent() {
   };
 
   return (
-    <div className="profile-container">
-      {/* Upper Titles Header */}
-      <div className="profile-header">
-        <h1 className="profile-title">Edit Profile</h1>
-        <p className="profile-subtitle">Update email & password</p>
+    <CommonPage>
+      <div className="profile-container">
+        {/* Upper Titles Header */}
+        <div className="profile-header">
+          <h1 className="profile-title">Edit Profile</h1>
+          <p className="profile-subtitle">Update email & password</p>
       </div>
 
       {/* Main Centered Form Box */}
@@ -75,7 +77,8 @@ export function EditProfileContent() {
           </form>
         </div>
       </div>
-    </div>
+      </div>
+    </CommonPage>
   );
 }
 
