@@ -1,13 +1,47 @@
-// CommonPage.tsx
-import React, { type ReactNode } from 'react';
+import React, { type ReactNode, useState, useRef, useEffect } from 'react';
 import "./CommonPage.css"; // Direct standard CSS import
 
 interface CommonPageProps {
   children?: ReactNode;
   currentPageTitle?: string;
+  onEditProfileClick?: () => void; // Callback tab trigger hoga jab "Edit Profile" click hoga
 }
 
-export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTitle = "Dashboard" }) => {
+export const CommonPage: React.FC<CommonPageProps> = ({ 
+  children, 
+  currentPageTitle = "Dashboard",
+  onEditProfileClick 
+}) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Jab user bahar click karega tw dropdown automatic close ho jayega
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(prev => !prev);
+  };
+
+  const handleEditProfile = () => {
+    setIsDropdownOpen(false);
+    if (onEditProfileClick) {
+      onEditProfileClick();
+    } else {
+      console.log("Edit Profile Clicked!");
+      // Agar aap routing use kar rahe hain tw yahan navigation code add kar sakte hain
+    }
+  };
+
   return (
     <div className="layoutContainer">
       
@@ -28,14 +62,33 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
           <div className="notificationIcon" title="Notifications">
             🔔
           </div>
-          <div className="profileInfo">
-            <img 
-              src="https://via.placeholder.com/150" 
-              alt="Profile" 
-              className="avatar" 
-            />
-            <span className="profileName">Super Admin</span>
+          
+          {/* Wrapper with ref to handle click-outside */}
+          <div className="profileWrapper" ref={dropdownRef}>
+            <div className="profileInfo" onClick={handleDropdownToggle}>
+              <img 
+                src="https://via.placeholder.com/150" 
+                alt="Profile" 
+                className="avatar" 
+              />
+              <span className="profileName">Super Admin</span>
+            </div>
+
+            {/* Floating Edit Profile Dropdown */}
+            {isDropdownOpen && (
+              <div className="profileDropdown">
+                <button className="dropdownItem" onClick={handleEditProfile}>
+                  <svg className="dropdownIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <line x1="16" y1="11" x2="22" y2="11"></line>
+                  </svg>
+                  Edit Profile
+                </button>
+              </div>
+            )}
           </div>
+
           <button className="logoutBtn">Log out</button>
         </div>
       </header>

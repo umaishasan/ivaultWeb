@@ -192,3 +192,83 @@
   text-decoration: underline;
   margin-left: 4px;
 }
+
+/* ==========================================================================
+   EDIT PROFILE DROPDOWN STYLING (Appended)
+   ========================================================================== */
+
+/* Dropdown trigger wrapper */
+.profileWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover style and interactive pointer for clicking the profile */
+.profileInfo {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.profileInfo:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Floating Edit Profile Dropdown Container */
+.profileDropdown {
+  position: absolute;
+  top: 42px; /* Standard navbar alignment below the avatar */
+  right: 0;
+  background-color: #5d75a8; /* Dynamic semi-transparent blue hue matching image */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  min-width: 190px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideDownDropdown 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Individual list item inside dropdown */
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* Item hover state highlighting */
+.dropdownItem:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* SVG icon scale consistency */
+.dropdownIcon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* Micro-interaction animation for popup load */
+@keyframes slideDownDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,105 @@
+/* Container styling to align with CommonPage */
+.notification-container {
+  padding: 32px 40px;
+  color: #ffffff;
+  background-color: #0c0f19; /* Pure dark page background */
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.notification-header {
+  margin-bottom: 24px;
+}
+
+.notification-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.notification-subtitle {
+  color: #5d6578;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Clear Button Link Wrapper */
+.clear-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  color: #a0aec0;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.btn-clear:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Main Notification Panel */
+.notification-card {
+  background-color: #1b2030; /* Matches exact theme panels */
+  border-radius: 12px; /* Softly rounded corners as in image */
+  border: 1px solid #232a3e;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Notification Row Item */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px; /* Spacious horizontal padding */
+  border-bottom: 1px solid rgba(35, 42, 62, 0.6);
+  transition: background-color 0.15s ease;
+}
+
+/* Remove bottom border for the last element */
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item:hover {
+  background-color: rgba(35, 42, 62, 0.2);
+}
+
+/* Left Content Wrapper */
+.notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.notification-user {
+  font-size: 14px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.notification-msg {
+  font-size: 13px;
+  color: #5d6578; /* Secondary dark grey color */
+}
+
+/* Red Indicator Dot for unread/new status */
+.unread-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #f43f5e; /* Crisp red color */
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(244, 63, 94, 0.5);
+}
