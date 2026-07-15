@@ -1,6 +1,7 @@
 import React from 'react';
 import './dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
+import PeopleIcon from '@mui/icons-material/People';
 
 // SVG Icons directly added for a modern clean look matching the UI Mockup
 const ShieldIcon = () => (
@@ -61,20 +62,14 @@ export function DashboardContent() {
               <div className="card-value-group">
                 <span className="stat-value">850</span>
               </div>
-              <div className="card-icon-container">
-                <ShieldIcon />
-              </div>
             </div>
 
             {/* Total Users Card */}
             <div className="stat-card">
               <h3 className="card-title">Total Users</h3>
               <div className="card-value-group">
-                <span className="stat-value" style={{ marginRight: '6px' }}>👥</span>
+                <PeopleIcon />
                 <span className="stat-value">980</span>
-              </div>
-              <div className="card-icon-container">
-                <UserIcon />
               </div>
             </div>
           </div>

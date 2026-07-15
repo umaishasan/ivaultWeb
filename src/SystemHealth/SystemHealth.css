@@ -13,6 +13,7 @@
 /* Header Sections */
 .health-header {
   margin-bottom: 4px;
+  text-align: left;
 }
 
 .health-title {

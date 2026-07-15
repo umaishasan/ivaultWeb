@@ -10,6 +10,7 @@
 /* Header Section */
 .notification-header {
   margin-bottom: 24px;
+  text-align: left;
 }
 
 .notification-title {

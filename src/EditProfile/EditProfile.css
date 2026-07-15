@@ -10,6 +10,7 @@
 /* Header Section */
 .profile-header {
   margin-bottom: 48px; /* Extra margin before the centered form */
+  text-align: left; /* Center the header for the profile page */
 }
 
 .profile-title {

@@ -10,6 +10,7 @@
 /* Header Sections */
 .dashboard-header {
   margin-bottom: 28px;
+  text-align: left;
 }
 
 .dashboard-title {
@@ -41,11 +42,12 @@
   border-radius: 6px;
   border: 1px solid #232a3e;
   position: relative;
+  text-align: left;
 }
 
 .card-title {
   color: #8b94a5;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   margin: 0 0 16px 0;
 }

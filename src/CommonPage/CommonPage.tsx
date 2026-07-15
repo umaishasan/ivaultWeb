@@ -17,13 +17,27 @@ interface CommonPageProps {
 
 export const CommonPage: React.FC<CommonPageProps> = ({ 
   children, 
-  currentPageTitle = "Dashboard",
-  onEditProfileClick 
+  currentPageTitle: currentPageTitleProp,
+  // onEditProfileClick 
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pageTitles: Record<string, string> = {
+    '/dashboard': 'Dashboard',
+    '/devices': 'Devices',
+    '/users': 'Users',
+    '/system-health': 'System Health',
+    '/rbac': 'RBAC',
+    '/editprofile': 'Edit Profile',
+    '/notifications': 'Notifications',
+  };
+  const currentPageTitle = currentPageTitleProp ?? pageTitles[location.pathname] ?? 'Dashboard';
+
+  useEffect(() => {
+    document.title = `i-Vault - ${currentPageTitle}`;
+  }, [currentPageTitle]);
 
   // Jab user bahar click karega tw dropdown automatic close ho jayega
   useEffect(() => {
@@ -42,15 +56,15 @@ export const CommonPage: React.FC<CommonPageProps> = ({
     setIsDropdownOpen(prev => !prev);
   };
 
-  const handleEditProfile = () => {
-    setIsDropdownOpen(false);
-    if (onEditProfileClick) {
-      onEditProfileClick();
-    } else {
-      console.log("Edit Profile Clicked!");
-      // Agar aap routing use kar rahe hain tw yahan navigation code add kar sakte hain
-    }
-  };
+  // const handleEditProfile = () => {
+  //   setIsDropdownOpen(false);
+  //   if (onEditProfileClick) {
+  //     onEditProfileClick();
+  //   } else {
+  //     console.log("Edit Profile Clicked!");
+  //     // Agar aap routing use kar rahe hain tw yahan navigation code add kar sakte hain
+  //   }
+  // };
 
   return (
     <div className="layoutContainer">
@@ -95,7 +109,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({
             )}
           </div>
 
-          <button className="logoutBtn">Log out</button>
+          <button className="logoutBtn" onClick={() => navigate('/login')}>Log out</button>
         </div>
       </header>
 
