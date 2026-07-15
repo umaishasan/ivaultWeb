@@ -1,18 +1,28 @@
 import './App.css'
-import { CommonPage } from './CommonPage/CommonPage.tsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Login from './Login/Login.tsx'
 import { DashboardContent } from './Dashboard/Dashboard.tsx'
-import Device from './Device/Device.tsx'
+import { DeviceContent } from './Device/Device.tsx'
+import { UserContent } from './User/User.tsx'
+import { SystemHealthContent } from './SystemHealth/SystemHealth.tsx'
+import { RBACContent } from './RBAC/Rbac.tsx'
 import { EditProfileContent } from './EditProfile/EditProfile.tsx'
 import { NotificationContent } from './Notification/Notification.tsx'
-import RBACContent from './RBAC/Rbac.tsx'
-import { SystemHealthContent } from './SystemHealth/SystemHealth.tsx'
-import User from './User/User.tsx'
 
 function App() {
   return (
-    <CommonPage>
-        <NotificationContent />
-    </CommonPage>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<DashboardContent />} />
+        <Route path="/devices" element={<DeviceContent />} />
+        <Route path="/users" element={<UserContent />} />
+        <Route path="/system-health" element={<SystemHealthContent />} />
+        <Route path="/rbac" element={<RBACContent />} />
+        <Route path="/editprofile" element={<EditProfileContent />} />
+        <Route path="/notifications" element={<NotificationContent />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

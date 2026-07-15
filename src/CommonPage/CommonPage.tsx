@@ -1,4 +1,5 @@
 import React, { type ReactNode, useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "./CommonPage.css"; // Direct standard CSS import
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
@@ -19,6 +20,8 @@ export const CommonPage: React.FC<CommonPageProps> = ({
   currentPageTitle = "Dashboard",
   onEditProfileClick 
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +70,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({
 
         <div className="rightHeader">
           <div className="notificationIcon" title="Notifications">
-            <NotificationsIcon style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
+            <NotificationsIcon onClick={() => navigate('/notifications')} style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
           </div>
           
           {/* Wrapper with ref to handle click-outside */}
@@ -84,7 +87,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({
             {/* Floating Edit Profile Dropdown */}
             {isDropdownOpen && (
               <div className="profileDropdown" >
-                <button className="dropdownItem" onClick={handleEditProfile}>
+                <button className="dropdownItem" onClick={() => navigate('/editprofile')}>
                   <DriveFileRenameOutlineIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
                   Edit Profile
                 </button>
@@ -102,31 +105,31 @@ export const CommonPage: React.FC<CommonPageProps> = ({
         {/* Sidebar */}
         <aside className="sidebar">
           <div className="navLinks">
-            <a href="#dashboard" className="navLink activeNavLink">
+            <button onClick={() => navigate('/dashboard')} className={`navLink ${location.pathname === '/dashboard' ? 'activeNavLink' : ''}`}>
               <span>
                 <DashboardIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
               </span> Dashboard
-            </a>
-            <a href="#devices" className="navLink">
+            </button>
+            <button onClick={() => navigate('/devices')} className={`navLink ${location.pathname === '/devices' ? 'activeNavLink' : ''}`}>
               <span>
                 <PhoneAndroidIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
               </span> Devices
-            </a>
-            <a href="#users" className="navLink">
+            </button>
+            <button onClick={() => navigate('/users')} className={`navLink ${location.pathname === '/users' ? 'activeNavLink' : ''}`}>
               <span>
                 <PersonIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
               </span> Users
-            </a>
-            <a href="#health" className="navLink">
+            </button>
+            <button onClick={() => navigate('/system-health')} className={`navLink ${location.pathname === '/system-health' ? 'activeNavLink' : ''}`}>
               <span>
                 <MonitorHeartIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
               </span> System Health
-            </a>
-            <a href="#rbac" className="navLink">
+            </button>
+            <button onClick={() => navigate('/rbac')} className={`navLink ${location.pathname === '/rbac' ? 'activeNavLink' : ''}`}>
               <span>
                 <AddModeratorIcon className='navlinkIcon' style={{ marginRight: '3px', verticalAlign: 'middle' }}/>
               </span> RBAC
-            </a>
+            </button>
           </div>
 
           <div className="sidebarFooter">

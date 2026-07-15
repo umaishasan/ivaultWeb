@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './EditProfile.css';
 import { CommonPage } from '../CommonPage/CommonPage';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export function EditProfileContent() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -69,7 +71,7 @@ export function EditProfileContent() {
 
             {/* Centered Button Wrapper */}
             <div className="form-actions">
-              <button type="submit" className="btn-update">
+              <button type="submit" className="btn-update" onClick={() => navigate('/dashboard')}>
                 Update
               </button>
             </div>
