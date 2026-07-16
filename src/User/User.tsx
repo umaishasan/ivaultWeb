@@ -4,6 +4,12 @@ import { CommonPage } from '../CommonPage/CommonPage';
 import { initialUsers } from '../Model/Model';
 
 export function UserContent() {
+    const [currentPage, setCurrentPage] = useState(1);
+    const rowsPerPage = 10;
+    const totalPages = Math.ceil(initialUsers.length / rowsPerPage);
+    const safePage = Math.min(currentPage, totalPages || 1);
+    const startIndex = (safePage - 1) * rowsPerPage;
+    const paginatedSafeData = initialUsers.slice(startIndex, startIndex + rowsPerPage);
   const [paymentFilter, setPaymentFilter] = useState('All');
   const [deviceFilter, setDeviceFilter] = useState('All');
 
@@ -78,11 +84,15 @@ export function UserContent() {
           </table>
         </div>
 
-        {/* Pagination Controls */}
-        <div className="user-pagination">
-          <button className="pagination-btn">❬</button>
-          <span>Page 1 to 50</span>
-          <button className="pagination-btn">❭</button>
+        {/* Table Pagination */}
+        <div className="pagination-container">
+          <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={safePage === 1}>
+            ❬
+            </button>
+            <span>Page {safePage} of {totalPages}</span>
+            <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={safePage === totalPages || totalPages === 0}>
+            ❭
+          </button>
         </div>
       </div>
       </div>

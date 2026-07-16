@@ -182,3 +182,12 @@
 .pagination-btn:hover {
   color: #ffffff;
 }
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-btn:disabled:hover {
+  color: #5d6578;
+}

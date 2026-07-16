@@ -4,6 +4,12 @@ import { CommonPage } from '../CommonPage/CommonPage';
 import { systemData, serverData } from '../Model/Model';
 
 export function SystemHealthContent() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(systemData.length / rowsPerPage);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const startIndex = (safePage - 1) * rowsPerPage;
+  const paginatedSafeData = systemData.slice(startIndex, startIndex + rowsPerPage);
   const [deviceFilter, setDeviceFilter] = useState('All');
 
   // Filter dynamic logic
@@ -79,11 +85,15 @@ export function SystemHealthContent() {
           </table>
         </div>
 
-        {/* System Information Table Pagination */}
-        <div className="health-pagination">
-          <button className="pagination-btn">❬</button>
-          <span>Page 1 to 50</span>
-          <button className="pagination-btn">❭</button>
+        {/* Table Pagination */}
+        <div className="pagination-container">
+          <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={safePage === 1}>
+            ❬
+            </button>
+            <span>Page {safePage} of {totalPages}</span>
+            <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={safePage === totalPages || totalPages === 0}>
+            ❭
+          </button>
         </div>
       </div>
 
