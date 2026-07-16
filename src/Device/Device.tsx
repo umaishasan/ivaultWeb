@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './device.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-
-// Exact mock data according to your Devices image
-const initialDevices = [
-  { type: 'Big Safe', name: 'SafeVault-091', connectivity: 'Active' },
-  { type: 'Small Safe', name: 'SafeVault-114', connectivity: 'Active' },
-  { type: 'Big Safe', name: 'SafeVault-091', connectivity: 'Active' },
-  { type: 'Small Safe', name: 'SafeVault-114', connectivity: 'Inactive_Orange' }, // Orange Inactive
-  { type: 'Big Safe', name: 'SafeVault-091', connectivity: 'Active' },
-  { type: 'Small Safe', name: 'SafeVault-113', connectivity: 'Inactive_Red' },    // Red Inactive
-  { type: 'Big Safe', name: 'SafeVault-091', connectivity: 'Active' },
-  { type: 'Pistol', name: 'D17', connectivity: 'None' },                          // Dash '-' state
-  { type: 'Pistol', name: 'Desert Eagle', connectivity: 'None' },                 // Dash '-' state
-];
+import { initialDevices } from '../Model/Model';
 
 export function DeviceContent() {
   const [deviceTypeFilter, setDeviceTypeFilter] = useState('All');

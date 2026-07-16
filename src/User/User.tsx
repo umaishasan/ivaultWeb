@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './user.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-
-// Exact mock data according to your Users image
-const initialUsers = [
-  { name: 'John', email: 'john123@gmail.com', deviceType: 'Big Safe', paymentInfo: 'Paid' },
-  { name: 'Smith', email: 'Smith@gmail.com', deviceType: 'Big Safe', paymentInfo: 'Trail' }, // Note: Keeping 'Trail' typo as in mock or can be 'Trial'
-  { name: 'Lauren', email: 'lauren123@gmail.com', deviceType: 'Pistol', paymentInfo: 'Paid' },
-  { name: 'Kim', email: 'Kim23@gmail.com', deviceType: 'Small Safe', paymentInfo: 'Paid' },
-  { name: 'Yannik', email: 'Yannik45@gmail.com', deviceType: 'Pistol', paymentInfo: 'Trail' },
-  { name: 'Donnal', email: 'donal66@gmail.com', deviceType: 'Big Safe', paymentInfo: 'Paid' },
-  { name: 'Danny', email: 'jdanny123@gmail.com', deviceType: 'Small Safe', paymentInfo: 'Paid' },
-  { name: 'Louis', email: 'louis93@gmail.com', deviceType: 'Small Safe', paymentInfo: 'Trail' },
-  { name: 'John', email: 'john123@gmail.com', deviceType: 'Small Safe', paymentInfo: 'Trail' },
-];
+import { initialUsers } from '../Model/Model';
 
 export function UserContent() {
   const [paymentFilter, setPaymentFilter] = useState('All');

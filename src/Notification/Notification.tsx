@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import './Notification.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-
-// Initial state containing notifications as represented in the mockup
-const initialNotifications = [
-  { id: 1, name: 'John', message: 'John Registered', isNew: true },
-  { id: 2, name: 'Smith', message: 'Smith Registered', isNew: true },
-  { id: 3, name: 'Lauren', message: 'Lauren Registered', isNew: false },
-  { id: 4, name: 'Kim', message: 'Kim Registered', isNew: false },
-];
+import { initialNotifications } from '../Model/Model';
 
 export function NotificationContent() {
   const [notifications, setNotifications] = useState(initialNotifications);

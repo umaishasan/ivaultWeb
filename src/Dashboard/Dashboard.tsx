@@ -2,6 +2,7 @@ import React from 'react';
 import './dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
+import { safeData } from '../Model/Model';
 
 // SVG Icons directly added for a modern clean look matching the UI Mockup
 const ShieldIcon = () => (
@@ -16,14 +17,6 @@ const UserIcon = () => (
     <circle cx="12" cy="7" r="4" />
   </svg>
 );
-
-const safeData = [
-  { id: 'SafeVault-091', date: '8/17/2023 2:00 PM', status: 'Online', firmware: 'v2.1.3' },
-  { id: 'SafeVault-114', date: '8/17/2023 2:00 PM', status: 'Online', firmware: 'v2.1.3' },
-  { id: 'SafeVault-091', date: '8/17/2023 2:00 PM', status: 'Online', firmware: 'v2.1.3' },
-  { id: 'SafeVault-114', date: '8/17/2023 2:00 PM', status: 'Offline', firmware: 'v2.1.3' },
-  { id: 'SafeVault-113', date: '8/17/2023 2:00 PM', status: 'Offline', firmware: 'v2.1.3' },
-];
 
 export function DashboardContent() {
   return (

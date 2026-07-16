@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './SystemHealth.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-
-// Mock Data from the System Health Image
-const systemData = [
-  { type: 'Small Safe', name: 'SafeVault-114', battery: '92%', temp: '22', status: 'Excellent' },
-  { type: 'Big Safe', name: 'SafeVault-109', battery: '35%', temp: '40', status: 'Bad' },
-  { type: 'Big Safe', name: 'SafeVault-109', battery: '68%', temp: '25', status: 'Good' },
-  { type: 'Small Safe', name: 'SafeVault-114', battery: '85%', temp: '16', status: 'Excellent' },
-  { type: 'Pistol Vault', name: 'PistolVault-102', battery: '50%', temp: '28', status: 'Good' },
-];
-
-const serverData = [
-  { server: 'Azure Cloud', status: 'Available' }
-];
+import { systemData, serverData } from '../Model/Model';
 
 export function SystemHealthContent() {
   const [deviceFilter, setDeviceFilter] = useState('All');

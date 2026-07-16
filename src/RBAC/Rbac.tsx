@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './RBAC.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-
-// Initial state matching your image data
-const initialUserPermissions = [
-  { id: 1, name: 'John', family: true, staff: false },
-  { id: 2, name: 'Smith', family: true, staff: false },
-  { id: 3, name: 'Lauren', family: false, staff: true },
-  { id: 4, name: 'Kim', family: false, staff: true },
-  { id: 5, name: 'Yannik', family: false, staff: true },
-  { id: 6, name: 'Donnal', family: false, staff: true },
-  { id: 7, name: 'Danny', family: false, staff: true },
-  { id: 8, name: 'Louis', family: false, staff: true },
-  { id: 9, name: 'John', family: false, staff: true },
-];
+import { initialUserPermissions } from '../Model/Model';
 
 export function RBACContent() {
   const [permissions, setPermissions] = useState(initialUserPermissions);
