@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
@@ -19,6 +19,13 @@ const UserIcon = () => (
 );
 
 export function DashboardContent() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(safeData.length / rowsPerPage);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const startIndex = (safePage - 1) * rowsPerPage;
+  const paginatedSafeData = safeData.slice(startIndex, startIndex + rowsPerPage);
+
   return (
     <CommonPage>
         <div className="dashboard-container">
@@ -81,7 +88,7 @@ export function DashboardContent() {
                   </tr>
                 </thead>
                 <tbody className="font-mono">
-                  {safeData.map((safe, index) => (
+                  {paginatedSafeData.map((safe, index) => (
                     <tr key={index}>
                       <td style={{ color: '#ffffff', fontWeight: 500 }}>{safe.id}</td>
                       <td style={{ color: '#8b94a5' }}>{safe.date}</td>
@@ -100,9 +107,21 @@ export function DashboardContent() {
 
             {/* Table Pagination */}
             <div className="pagination-container">
-              <button className="pagination-btn">❬</button>
-              <span>Page 1 to 50</span>
-              <button className="pagination-btn">❭</button>
+              <button
+                className="pagination-btn"
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={safePage === 1}
+              >
+                ❬
+              </button>
+              <span>Page {safePage} of {totalPages}</span>
+              <button
+                className="pagination-btn"
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                disabled={safePage === totalPages || totalPages === 0}
+              >
+                ❭
+              </button>
             </div>
           </div>
         </div>

@@ -64,7 +64,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 32px; /* Spacious horizontal padding */
+  padding: 10px 25px; /* Spacious horizontal padding */
   border-bottom: 1px solid rgba(35, 42, 62, 0.6);
   transition: background-color 0.15s ease;
 }
@@ -82,13 +82,14 @@
 .notification-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
 }
 
 .notification-user {
   font-size: 14px;
   font-weight: 500;
   color: #cbd5e1;
+  text-align: left;
 }
 
 .notification-msg {

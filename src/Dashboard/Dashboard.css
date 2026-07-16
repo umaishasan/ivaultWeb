@@ -122,6 +122,7 @@
   color: #a0aec0;
   border-bottom: 1px solid #232a3e;
   margin: 0;
+  text-align: left;
 }
 
 .table-responsive {
@@ -209,4 +210,13 @@
 
 .pagination-btn:hover {
   color: #ffffff;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-btn:disabled:hover {
+  color: #5d6578;
 }
