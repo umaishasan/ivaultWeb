@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './EditProfile.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function EditProfileContent() {
   const navigate = useNavigate();

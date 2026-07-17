@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
 import { safeData } from '../Model/Model';
 
 // SVG Icons directly added for a modern clean look matching the UI Mockup
-const ShieldIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  </svg>
-);
+// const ShieldIcon = () => (
+//   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+//     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+//   </svg>
+// );
 
-const UserIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
-  </svg>
-);
+// const UserIcon = () => (
+//   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+//     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+//     <circle cx="12" cy="7" r="4" />
+//   </svg>
+// );
 
 export function DashboardContent() {
   const [currentPage, setCurrentPage] = useState(1);

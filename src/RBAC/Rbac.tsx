@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './RBAC.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialUserPermissions } from '../Model/Model';

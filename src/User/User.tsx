@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './user.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialUsers } from '../Model/Model';
@@ -8,8 +8,8 @@ export function UserContent() {
     const rowsPerPage = 10;
     const totalPages = Math.ceil(initialUsers.length / rowsPerPage);
     const safePage = Math.min(currentPage, totalPages || 1);
-    const startIndex = (safePage - 1) * rowsPerPage;
-    const paginatedSafeData = initialUsers.slice(startIndex, startIndex + rowsPerPage);
+    //const startIndex = (safePage - 1) * rowsPerPage;
+    //const paginatedSafeData = initialUsers.slice(startIndex, startIndex + rowsPerPage);
   const [paymentFilter, setPaymentFilter] = useState('All');
   const [deviceFilter, setDeviceFilter] = useState('All');
 

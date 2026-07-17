@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Notification.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialNotifications } from '../Model/Model';

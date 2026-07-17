@@ -109,14 +109,14 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
   };
 
   // Jab user kisi single notification par click kare ya saari read karle:
-  const handleReadNotification = () => {
-    // 1. Manually ya loop ke zariye count barhayein jitni read ho chuki hain
-    const updatedReadCount = 4; // Jitni notifications user ne click/read karlin
-    // 2. Isko localStorage me save kar dein
-    localStorage.setItem('readNotificationsCount', updatedReadCount.toString());
-    // Agar aap Context/Redux use kar rahe hain to state update karein, 
-    // warna localStorage khud hi agli baar page load par CommonPage me update ho jayega.
-  };
+  // const handleReadNotification = () => {
+  //   // 1. Manually ya loop ke zariye count barhayein jitni read ho chuki hain
+  //   const updatedReadCount = 4; // Jitni notifications user ne click/read karlin
+  //   // 2. Isko localStorage me save kar dein
+  //   localStorage.setItem('readNotificationsCount', updatedReadCount.toString());
+  //   // Agar aap Context/Redux use kar rahe hain to state update karein, 
+  //   // warna localStorage khud hi agli baar page load par CommonPage me update ho jayega.
+  // };
 
   ///UI Starts from here which is rendered on the screen
   return (

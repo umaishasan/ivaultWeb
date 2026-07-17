@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './SystemHealth.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { systemData, serverData } from '../Model/Model';
@@ -8,8 +8,8 @@ export function SystemHealthContent() {
   const rowsPerPage = 10;
   const totalPages = Math.ceil(systemData.length / rowsPerPage);
   const safePage = Math.min(currentPage, totalPages || 1);
-  const startIndex = (safePage - 1) * rowsPerPage;
-  const paginatedSafeData = systemData.slice(startIndex, startIndex + rowsPerPage);
+  //const startIndex = (safePage - 1) * rowsPerPage;
+  //const paginatedSafeData = systemData.slice(startIndex, startIndex + rowsPerPage);
   const [deviceFilter, setDeviceFilter] = useState('All');
 
   // Filter dynamic logic

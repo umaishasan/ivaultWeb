@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './device.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialDevices } from '../Model/Model';
@@ -8,8 +8,8 @@ export function DeviceContent() {
   const rowsPerPage = 10;
   const totalPages = Math.ceil(initialDevices.length / rowsPerPage);
     const safePage = Math.min(currentPage, totalPages || 1);
-    const startIndex = (safePage - 1) * rowsPerPage;
-    const paginatedSafeData = initialDevices.slice(startIndex, startIndex + rowsPerPage);
+    //const startIndex = (safePage - 1) * rowsPerPage;
+    //const paginatedSafeData = initialDevices.slice(startIndex, startIndex + rowsPerPage);
   const [deviceTypeFilter, setDeviceTypeFilter] = useState('All');
 
   // Filter logic (if you want functional select state)
