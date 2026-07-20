@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-import './dashboard.css';
+import './Dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
 import { safeData } from '../Model/Model';

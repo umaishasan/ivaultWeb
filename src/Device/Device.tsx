@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-import './device.css';
+import './Device.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialDevices } from '../Model/Model';
 

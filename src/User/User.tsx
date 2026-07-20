@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './user.css';
+import './User.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialUsers } from '../Model/Model';
 

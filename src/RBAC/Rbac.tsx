@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './RBAC.css';
+import './Rbac.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import { initialUserPermissions } from '../Model/Model';
 
