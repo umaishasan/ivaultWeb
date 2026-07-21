@@ -9,8 +9,6 @@ export function DashboardContent() {
   const rowsPerPage = 10;
   const totalPages = Math.ceil(safeData.length / rowsPerPage);
   const safePage = Math.min(currentPage, totalPages || 1);
-  const startIndex = (safePage - 1) * rowsPerPage;
-  const paginatedSafeData = safeData.slice(startIndex, startIndex + rowsPerPage);
 
   const [firmwareFilter, setFirmwareFilter] = useState('All');
   const [connectionFilter, setConnectionFilter] = useState('All');
