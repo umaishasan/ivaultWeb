@@ -73,8 +73,8 @@ export function DashboardContent() {
 
           {/* Bottom Table Section */}
           <div className="table-section">
-            <h2 className="table-section-title">Safe Registration and Firmware Version Distribution</h2>
             <div className="table-top-bar">
+            <h2 className="table-section-title">Safe Registration and Firmware Version Distribution</h2>
               <div className="table-filters">
                   {/* Firmware Filter */}
                 <label className="user-select-label">Firmware:</label>
@@ -99,6 +99,7 @@ export function DashboardContent() {
               </div>
             </div>
 
+            {/* Responsive Dashboard Table */}
             <div className="table-responsive">
               <table className="custom-table">
                 <thead>

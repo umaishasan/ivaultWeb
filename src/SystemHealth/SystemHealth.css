@@ -54,6 +54,18 @@
   margin: 0;
 }
 
+.table-filters {
+  display: flex;
+  gap: 12px;
+}
+
+.system-select-label{
+  color: #a0aec0;
+  font-size: 12px;
+  margin-left: auto;
+  padding-right: 2px;
+}
+
 /* Dropdown styling */
 .health-select {
   background-color: #161a27;

@@ -6,16 +6,31 @@ import { systemData, serverData } from '../Model/Model';
 export function SystemHealthContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
-  const totalPages = Math.ceil(systemData.length / rowsPerPage);
-  const safePage = Math.min(currentPage, totalPages || 1);
-  //const startIndex = (safePage - 1) * rowsPerPage;
-  //const paginatedSafeData = systemData.slice(startIndex, startIndex + rowsPerPage);
-  const [deviceFilter, setDeviceFilter] = useState('All');
 
-  // Filter dynamic logic
-  const filteredSystemData = deviceFilter === 'All'
-    ? systemData
-    : systemData.filter(item => item.type === deviceFilter);
+  const [deviceFilter, setDeviceFilter] = useState('All');
+  const [statusFilter, setStatusFilter] = useState('All');
+  const [tempFilter, setTempFilter] = useState('All');
+
+  const filteredSystemData = systemData.filter(sys => {
+    const matchStatus = statusFilter === 'All' || sys.status === statusFilter;
+    const matchDevice = deviceFilter === 'All' || sys.type === deviceFilter;
+
+    const tempValue = Number(sys.temp);
+    let matchTemp = true;
+
+    if (tempFilter === 'under-16') {
+      matchTemp = tempValue <= 16;
+    } else if ((tempFilter === 'under-29') && (tempFilter > 'under-16')) {
+      matchTemp = tempValue <= 29;
+    } else if (tempFilter === 'over-30') {
+      matchTemp = tempValue > 30;
+    }
+
+    return matchStatus && matchDevice && matchTemp;
+  });
+
+  const totalPages = Math.ceil(filteredSystemData.length / rowsPerPage);
+  const safePage = Math.min(currentPage, totalPages || 1);
 
   // Helper to color-code statuses correctly
   const getStatusClass = (status: string) => {
@@ -46,18 +61,38 @@ export function SystemHealthContent() {
       <div className="health-card">
         <div className="table-top-bar">
           <h2 className="table-top-title">System Information</h2>
-          <select 
-            className="health-select"
-            value={deviceFilter}
-            onChange={(e) => setDeviceFilter(e.target.value)}
-          >
-            <option value="All">Device Type</option>
-            <option value="Big Safe">Big Safe</option>
-            <option value="Small Safe">Small Safe</option>
-            <option value="Pistol Vault">Pistol Vault</option>
-          </select>
+          <div className="table-filters">
+            {/* DeviceType Filter */}
+            <label className="system-select-label">Device Type:</label>
+            <select className="health-select" value={deviceFilter} onChange={(e) => setDeviceFilter(e.target.value)}>
+              <option value="All">All</option>
+              <option value="Big Safe">Big Safe</option>
+              <option value="Small Safe">Small Safe</option>
+              <option value="Pistol Vault">Pistol Vault</option>
+            </select>
+
+            {/* Status Filter */}
+            <label className="system-select-label">Status:</label>
+            <select className="health-select" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+              <option value="All">All</option>
+              <option value="Bad">Bad</option>
+              <option value="Good">Good</option>
+              <option value="Excellent">Excellent</option>
+            </select>
+
+            {/* Temperature Filter */}
+            <label className="system-select-label">Temp(°C):</label>
+            <select className="health-select" value={tempFilter} onChange={(e) => setTempFilter(e.target.value)}>
+              <option value="All">All</option>
+              <option value="under-16">≤ 16</option>
+              <option value="under-29">≤ 29</option>
+              <option value="over-30">&gt; 30</option>
+            </select>
+
+          </div>
         </div>
 
+        {/* Responsive System Table */}
         <div className="health-table-responsive">
           <table className="health-table">
             <thead>
@@ -103,6 +138,7 @@ export function SystemHealthContent() {
           <h2 className="table-top-title">Server Information</h2>
         </div>
 
+        {/*Responsive Server Table */}
         <div className="health-table-responsive">
           <table className="health-table">
             <thead>
@@ -124,6 +160,7 @@ export function SystemHealthContent() {
           </table>
         </div>
       </div>
+
       </div>
     </CommonPage>
   );
