@@ -140,7 +140,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  color: #94a3b8;
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.2s;
@@ -298,5 +298,114 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   LOGOUT MODAL STYLING
+   ========================================================================== */
+
+/* Darkened overlay for background blur/dull effect */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(5, 8, 20, 0.75); /* Dark background */
+  backdrop-filter: blur(4px);              /* Background blur effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Logout Card Box */
+.logoutModalCard {
+  background-color: #121829;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px 40px;
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: scaleUp 0.2s ease-out;
+}
+
+.logoutModalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.logoutModalSubtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 28px;
+}
+
+/* Update this class in CommonPage.css */
+.logoutModalActions {
+  display: flex;
+  flex-direction: row; /* Buttons ko side-by-side (horizontal) karne ke liye */
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Yes/Confirm Button */
+.confirmBtn {
+  flex: 1; /* Dono buttons barabar width ke honge */
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #2946d8 0%, #162d7d 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancelBtn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* No/Cancel Button */
+.cancelBtn {
+  flex: 1; /* Dono buttons barabar width ke honge */
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.confirmBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(31, 69, 171, 0.32);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
