@@ -78,13 +78,12 @@ export function DashboardContent() {
                 <label className="user-select-label">Firmware:</label>
                 <select className="user-select" value={firmwareFilter} onChange={(e) => setFirmwareFilter(e.target.value)}>
                   <option value="All">All</option>
-                  <option value="v2.1.3">2.1.3</option>
-                  <option value="v2.2.3">2.2.3</option>
                   <option value="v2.3.3">2.3.3</option>
+                  <option value="v2.2.3">2.2.3</option>
                   <option value="v2.1.3">2.1.3</option>
+                  <option value="v1.2.3">1.2.3</option>
                   <option value="v1.1.3">1.1.3</option>
                   <option value="v1.1.2">1.1.2</option>
-                  <option value="v1.2.3">1.2.3</option>
                 </select>
 
                 {/* Connection Filter */}

@@ -217,6 +217,94 @@
 }
 
 /* ==========================================================================
+   RESPONSIVE BEHAVIOR FOR MOBILE / TABLET / DESKTOP
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .leftHeader {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbs {
+    padding-left: 0;
+    font-size: 0.75rem;
+  }
+
+  .rightHeader {
+    margin-left: auto;
+    gap: 12px;
+  }
+
+  .bodyContainer {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #141c38;
+  }
+
+  .navLinks {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .navLink {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+
+  .sidebarFooter {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 12px;
+  }
+
+  .logoArea {
+    font-size: 0.95rem;
+  }
+
+  .breadcrumbs {
+    display: none;
+  }
+
+  .profileName {
+    display: none;
+  }
+
+  .rightHeader {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .mainContent {
+    padding: 12px;
+  }
+
+  .footer {
+    padding: 12px;
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
    EDIT PROFILE DROPDOWN STYLING (Appended)
    ========================================================================== */
 
