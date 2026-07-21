@@ -11,12 +11,16 @@ export function DeviceContent() {
     //const startIndex = (safePage - 1) * rowsPerPage;
     //const paginatedSafeData = initialDevices.slice(startIndex, startIndex + rowsPerPage);
   const [deviceTypeFilter, setDeviceTypeFilter] = useState('All');
+  const [connectivityFilter, setConnectivityFilter] = useState('All');
 
-  // Filter logic (if you want functional select state)
-  const filteredDevices = deviceTypeFilter === 'All' 
-    ? initialDevices 
-    : initialDevices.filter(device => device.type === deviceTypeFilter);
+  //For Device: Filter logic (if you want functional select state)
+  const filteredDevices = initialDevices.filter(device => {
+    const matchDevice = deviceTypeFilter === 'All' || device.type === deviceTypeFilter;
+    const matchConnectivity = connectivityFilter === 'All' || device.connectivity === connectivityFilter;
+    return matchDevice && matchConnectivity;
+  });
 
+  
   // Connectivity column formatter helper
   const renderConnectivity = (status: string) => {
     switch (status) {
@@ -26,16 +30,10 @@ export function DeviceContent() {
             <span className="conn-dot dot-active"></span>Active
           </span>
         );
-      case 'Inactive_Orange':
+      case 'Inactive':
         return (
           <span className="conn-badge conn-inactive">
             <span className="conn-dot dot-inactive"></span>Inactive
-          </span>
-        );
-      case 'Inactive_Red':
-        return (
-          <span className="conn-badge conn-critical">
-            <span className="conn-dot dot-critical"></span>Inactive
           </span>
         );
       default:
@@ -57,18 +55,25 @@ export function DeviceContent() {
         {/* Top Header bar with Title and Dropdown */}
         <div className="table-top-bar">
           <h2 className="table-top-title">User Information</h2>
-          <select 
-            className="device-select"
-            value={deviceTypeFilter}
-            onChange={(e) => setDeviceTypeFilter(e.target.value)}
-          >
-            <option value="All">Device Type</option>
-            <option value="Big Safe">Big Safe</option>
-            <option value="Small Safe">Small Safe</option>
-            <option value="Pistol">Pistol</option>
-          </select>
+          <div className="table-filters">
+            {/* device Filter */}
+            <label className="device-select-label">Device Type:</label>
+            <select className="device-select" value={deviceTypeFilter} onChange={(e) => setDeviceTypeFilter(e.target.value)}>
+              <option value="All">All</option>
+              <option value="Big Safe">Big Safe</option>
+              <option value="Small Safe">Small Safe</option>
+              <option value="Pistol">Pistol</option>
+            </select>
+            {/* Connectivity Filter */} 
+            <label className="device-select-label">Connectivity:</label>
+            <select className="device-select" value={connectivityFilter} onChange={(e) => setConnectivityFilter(e.target.value)}>
+              <option value="All">All</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
         </div>
-
+          
         {/* Responsive Table Grid */}
         <div className="device-table-responsive">
           <table className="device-table">
@@ -92,23 +97,23 @@ export function DeviceContent() {
         </div>
 
         {/* Table Pagination */}
-            <div className="pagination-container">
-              <button
-                className="pagination-btn"
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={safePage === 1}
-              >
-                ❬
-              </button>
-              <span>Page {safePage} of {totalPages}</span>
-              <button
-                className="pagination-btn"
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                disabled={safePage === totalPages || totalPages === 0}
-              >
-                ❭
-              </button>
-            </div>
+        <div className="pagination-container">
+          <button
+            className="pagination-btn"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={safePage === 1}
+          >
+            ❬
+          </button>
+          <span>Page {safePage} of {totalPages}</span>
+          <button
+            className="pagination-btn"
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={safePage === totalPages || totalPages === 0}
+          >
+            ❭
+          </button>
+        </div>
         
       </div>
       </div>

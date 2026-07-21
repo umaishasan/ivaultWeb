@@ -69,6 +69,18 @@
   padding-right: 32px;
 }
 
+.device-select-label{
+  color: #a0aec0;
+  font-size: 12px;
+  margin-left: auto;
+  padding-right: 5px;
+}
+
+.table-filters {
+  display: flex;
+  gap: 12px;
+}
+
 .device-select:focus {
   border-color: #4a5568;
 }
@@ -139,16 +151,9 @@
 }
 
 .conn-inactive {
-  color: #b45309; /* Darker orange/amber for orange inactive state */
+  color: #ef4444; /* Darker orange/amber for orange inactive state */
 }
 .dot-inactive {
-  background-color: #d97706;
-}
-
-.conn-critical {
-  color: #ef4444; /* Darker red for red inactive state */
-}
-.dot-critical {
   background-color: #ef4444;
 }
 

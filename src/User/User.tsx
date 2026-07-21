@@ -36,23 +36,17 @@ export function UserContent() {
           <h2 className="table-top-title">User Information</h2>
           <div className="table-filters">
             {/* Payment Filter */}
-            <select 
-              className="user-select"
-              value={paymentFilter}
-              onChange={(e) => setPaymentFilter(e.target.value)}
-            >
-              <option value="All">Payment Info</option>
+            <label className="user-select-label">Payment Info:</label>
+            <select className="user-select" value={paymentFilter} onChange={(e) => setPaymentFilter(e.target.value)}>
+              <option value="All">All</option>
               <option value="Paid">Paid</option>
               <option value="Trail">Trial</option>
             </select>
 
             {/* Device Type Filter */}
-            <select 
-              className="user-select"
-              value={deviceFilter}
-              onChange={(e) => setDeviceFilter(e.target.value)}
-            >
-              <option value="All">Device Type</option>
+            <label className="user-select-label">Device Type:</label>
+            <select className="user-select" value={deviceFilter} onChange={(e) => setDeviceFilter(e.target.value)}>
+              <option value="All">All</option>
               <option value="Big Safe">Big Safe</option>
               <option value="Small Safe">Small Safe</option>
               <option value="Pistol">Pistol</option>

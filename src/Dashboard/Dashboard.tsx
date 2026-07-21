@@ -4,20 +4,6 @@ import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
 import { safeData } from '../Model/Model';
 
-// SVG Icons directly added for a modern clean look matching the UI Mockup
-// const ShieldIcon = () => (
-//   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-//     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-//   </svg>
-// );
-
-// const UserIcon = () => (
-//   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-//     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-//     <circle cx="12" cy="7" r="4" />
-//   </svg>
-// );
-
 export function DashboardContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
@@ -25,6 +11,16 @@ export function DashboardContent() {
   const safePage = Math.min(currentPage, totalPages || 1);
   const startIndex = (safePage - 1) * rowsPerPage;
   const paginatedSafeData = safeData.slice(startIndex, startIndex + rowsPerPage);
+
+  const [firmwareFilter, setFirmwareFilter] = useState('All');
+  const [connectionFilter, setConnectionFilter] = useState('All');
+
+  // Multi-filtering logic for Firmware & Connection Status
+  const filteredSafeData = safeData.filter(safe => {
+    const matchFirmware = firmwareFilter === 'All' || safe.firmware === firmwareFilter;
+    const matchConnection = connectionFilter === 'All' || safe.status === connectionFilter;
+    return matchFirmware && matchConnection;
+  });
 
   return (
     <CommonPage>
@@ -37,6 +33,7 @@ export function DashboardContent() {
 
           {/* Stats Section */}
           <div className="stats-grid">
+            
             {/* Connectivity Status Card */}
             <div className="stat-card">
               <h3 className="card-title">Connectivity Status</h3>
@@ -77,6 +74,31 @@ export function DashboardContent() {
           {/* Bottom Table Section */}
           <div className="table-section">
             <h2 className="table-section-title">Safe Registration and Firmware Version Distribution</h2>
+            <div className="table-top-bar">
+              <div className="table-filters">
+                  {/* Firmware Filter */}
+                <label className="user-select-label">Firmware:</label>
+                <select className="user-select" value={firmwareFilter} onChange={(e) => setFirmwareFilter(e.target.value)}>
+                  <option value="All">All</option>
+                  <option value="v2.1.3">2.1.3</option>
+                  <option value="v2.2.3">2.2.3</option>
+                  <option value="v2.3.3">2.3.3</option>
+                  <option value="v2.1.3">2.1.3</option>
+                  <option value="v1.1.3">1.1.3</option>
+                  <option value="v1.1.2">1.1.2</option>
+                  <option value="v1.2.3">1.2.3</option>
+                </select>
+
+                {/* Connection Filter */}
+                <label className="user-select-label">Connection Status:</label>
+                <select className="user-select" value={connectionFilter} onChange={(e) => setConnectionFilter(e.target.value)}>
+                  <option value="All">All</option>
+                  <option value="Online">Online</option>
+                  <option value="Offline">Offline</option>
+                </select>
+              </div>
+            </div>
+
             <div className="table-responsive">
               <table className="custom-table">
                 <thead>
@@ -88,7 +110,7 @@ export function DashboardContent() {
                   </tr>
                 </thead>
                 <tbody className="font-mono">
-                  {paginatedSafeData.map((safe, index) => (
+                  {filteredSafeData.map((safe, index) => (
                     <tr key={index}>
                       <td style={{ color: '#ffffff', fontWeight: 500 }}>{safe.id}</td>
                       <td style={{ color: '#8b94a5' }}>{safe.date}</td>
@@ -107,23 +129,17 @@ export function DashboardContent() {
 
             {/* Table Pagination */}
             <div className="pagination-container">
-              <button
-                className="pagination-btn"
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={safePage === 1}
-              >
+              <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={safePage === 1}>
                 ❬
               </button>
               <span>Page {safePage} of {totalPages}</span>
-              <button
-                className="pagination-btn"
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                disabled={safePage === totalPages || totalPages === 0}
-              >
+              <button className="pagination-btn" onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={safePage === totalPages || totalPages === 0}>
                 ❭
               </button>
             </div>
+
           </div>
+
         </div>
     </CommonPage>
   );

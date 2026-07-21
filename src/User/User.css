@@ -35,6 +35,13 @@
   overflow: hidden;
 }
 
+.user-select-label{
+  color: #a0aec0;
+  font-size: 12px;
+  margin-left: auto;
+  padding-right: 2px;
+}
+
 /* Top bar with title and action controls (Double Dropdowns) */
 .table-top-bar {
   display: flex;

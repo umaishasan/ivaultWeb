@@ -129,6 +129,20 @@
   overflow-x: auto;
 }
 
+.table-filters {
+  display: flex;
+  gap: 12px;
+}
+
+/* Top bar with title and action controls (Double Dropdowns) */
+.table-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid #232a3e;
+}
+
 .custom-table {
   width: 100%;
   border-collapse: collapse;
