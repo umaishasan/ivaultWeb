@@ -54,7 +54,7 @@ export function DeviceContent() {
       <div className="device-table-card">
         {/* Top Header bar with Title and Dropdown */}
         <div className="table-top-bar">
-          <h2 className="table-top-title">User Information</h2>
+          <h2 className="table-top-title">Device Information</h2>
           <div className="table-filters">
             {/* device Filter */}
             <label className="device-select-label">Device Type:</label>

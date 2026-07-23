@@ -130,7 +130,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
           </div>
 
           {/* Direct route navigate karne ki bajaye modal open karo */}
-          <button className="logoutBtn" onClick={() => setIsLogoutModalOpen(true)}>Log out</button>
+          <button className="logoutBtn" onClick={() => setIsLogoutModalOpen(true)}>Logout</button>
         </div>
       </header>
 
