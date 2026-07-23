@@ -84,23 +84,24 @@
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
   border-radius: 4px;
   object-fit: cover;
 }
 
 .profileName {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  display: block;
 }
 
 .logoutBtn {
   background-color: transparent;
-  border: 1px solid #1e293b;
+  /*border: 1px solid #1e293b;*/
   color: #94a3b8;
-  padding: 6px 5px;
-  border-radius: 4px;
+  padding: 6px 0px;
+  /*border-radius: 4px;*/
   cursor: pointer;
   font-size: 0.8rem;
   transition: all 0.2s;

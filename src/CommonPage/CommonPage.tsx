@@ -8,6 +8,7 @@ import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import AddModeratorIcon from '@mui/icons-material/AddModerator';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Badge from '@mui/material/Badge';
 
 interface CommonPageProps {
@@ -130,7 +131,7 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
           </div>
 
           {/* Direct route navigate karne ki bajaye modal open karo */}
-          <button className="logoutBtn" onClick={() => setIsLogoutModalOpen(true)}>Logout</button>
+          <LogoutIcon className="logoutBtn" onClick={() => setIsLogoutModalOpen(true)}></LogoutIcon>
         </div>
       </header>
 
