@@ -1,17 +1,18 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import './Dashboard.css';
 import { CommonPage } from '../CommonPage/CommonPage';
 import PeopleIcon from '@mui/icons-material/People';
 import { safeData } from '../Model/Model';
 
 export function DashboardContent() {
+  var fetchApi = "http://localhost:5000/api/message";
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
   const totalPages = Math.ceil(safeData.length / rowsPerPage);
   const safePage = Math.min(currentPage, totalPages || 1);
-
   const [firmwareFilter, setFirmwareFilter] = useState('All');
   const [connectionFilter, setConnectionFilter] = useState('All');
+  const [message, setMessage] = useState('');
 
   // Multi-filtering logic for Firmware & Connection Status
   const filteredSafeData = safeData.filter(safe => {
@@ -19,6 +20,14 @@ export function DashboardContent() {
     const matchConnection = connectionFilter === 'All' || safe.status === connectionFilter;
     return matchFirmware && matchConnection;
   });
+
+  useEffect(() => {
+    fetch(fetchApi)
+      .then(response => response.json())
+      .then(data => {setMessage(data.message)})
+      .catch(error => {console.error('Error fetching API data:', error)});
+    console.log("API message call from backend:", message);
+  }, []);
 
   return (
     <CommonPage>
