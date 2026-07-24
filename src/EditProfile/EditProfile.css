@@ -94,8 +94,8 @@
 
 /* Wide Blue Rounded Button */
 .btn-update {
-  background-color: #112255; /* Custom dark blue color from image */
-  color: #cbd5e1;
+  background: linear-gradient(135deg, #2946d8 0%, #162d7d 100%); /* Custom dark blue color from image */
+  color: #ffffff;
   border: none;
   outline: none;
   padding: 12px 0;
@@ -104,12 +104,12 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: background-color 0.2s ease;
 }
 
 .btn-update:hover {
-  background-color: #172d6e;
-  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(31, 69, 171, 0.32);
 }
 
 .btn-update:active {
