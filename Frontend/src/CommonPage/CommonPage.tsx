@@ -94,8 +94,9 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
       <header className="header">
         <div className="leftHeader">
           <div className="logoArea">
-            <span className="logoIcon">🛡️</span>
-            <span>i-Vault</span>
+            <img src="/Logo.png" alt="i-Vault Logo" width={40} height={40} />
+            {/*<span className="logoIcon">🛡️</span>
+            <span>i-Vault</span>*/}
           </div>
           <div className="breadcrumbs">
             <span>Manufacturer Portal</span>
