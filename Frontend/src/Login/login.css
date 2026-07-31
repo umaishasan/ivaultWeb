@@ -21,9 +21,26 @@
   position: relative;
   z-index: 1;
   width: min(100%, 520px);
-  padding: 32px 28px 24px;
+  /* padding: 32px 28px 24px; */
   box-sizing: border-box;
   color: #f5f7ff;
+}
+
+.logoAreaLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Extra left padding ko control karne ke liye */
+}
+
+/* Header ke andar Logo image ki naye styling */
+.headerLogoImgLogin {
+  height: 300px;          /* Navbar ki height (60px) ke hisab se perfect height */
+  width: 300px;           /* Aspect ratio automatic maintain rahega */
+  /* object-fit: contain;   */
+  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .visibility-toggle {
@@ -99,6 +116,7 @@
   background: rgba(15, 20, 39, 0.95);
   box-shadow: 0 24px 80px rgba(1, 10, 35, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 50%;
 }
 
 .login-card h1 {

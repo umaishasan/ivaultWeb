@@ -10,6 +10,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Badge from '@mui/material/Badge';
+import logoImg from '../assets/LogoOnly.png';
+import sulogologoImg from '../assets/SulogoLogo.png';
 
 interface CommonPageProps {
   children?: ReactNode;
@@ -93,10 +95,10 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
       {/* 1. Top Header */}
       <header className="header">
         <div className="leftHeader">
+          {/* Header logo section */}
           <div className="logoArea">
-            <img src="/Logo.png" alt="i-Vault Logo" width={40} height={40} />
-            {/*<span className="logoIcon">🛡️</span>
-            <span>i-Vault</span>*/}
+            <img src={logoImg} alt="i-Vault Logo" className="headerLogoImg" />
+            <img src={sulogologoImg} alt="Sulogo Logo" className="headerSulogoLogoImg" />
           </div>
           <div className="breadcrumbs">
             <span>Manufacturer Portal</span>

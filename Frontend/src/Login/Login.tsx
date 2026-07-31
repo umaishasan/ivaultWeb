@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import './login.css'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import logoImg from '../assets/Logo.png';
 
 function Login() {
   var loginApiUrl = 'http://localhost:5000/api/login';
@@ -46,15 +47,9 @@ function Login() {
     <div className="app-shell">
       <div className="background-glow"></div>
       <main className="login-page">
-        <header className="brand">
-          <div className="brand-icon" aria-hidden="true">
-            <span className="lock-shape" />
-          </div>
-          <div>
-            <p className="brand-label">i-Vault</p>
-            <p className="brand-subtitle">Secure your Asset</p>
-          </div>
-        </header>
+        <div className="logoAreaLogin">
+            <img src={logoImg} alt="i-Vault Logo" className="headerLogoImgLogin" />
+        </div>
 
         <section className="login-card">
           <h1>Login</h1>

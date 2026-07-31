@@ -24,16 +24,29 @@
 .leftHeader {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 46px;
 }
 
 .logoArea {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  /* Extra left padding ko control karne ke liye */
+  gap: 8px; 
+}
+
+/* Header ke andar Logo image ki naye styling */
+.headerLogoImg {
+  height: 60px;          /* Navbar ki height (60px) ke hisab se perfect height */
+  width: 60px;           /* Aspect ratio automatic maintain rahega */
+  object-fit: contain;  /* Image squish nahi hogi */
+  display: block;
+}
+
+.headerSulogoLogoImg {
+  height: 60px;          /* Navbar ki height (60px) ke hisab se perfect height */
+  width: 90px;           /* Aspect ratio automatic maintain rahega */
+  object-fit: contain;  /* Image squish nahi hogi */
+  display: block;
 }
 
 .logoIcon {
@@ -47,8 +60,9 @@
   font-size: 0.8rem;
 }
 
+/* Breadcrumbs ki extra spacing thodi adjust karein */
 .breadcrumbs {
-  padding-left: 110px;
+  padding-left: 20px;    /* Pehle 110px tha, jis se gap zyada ho raha tha */
   font-size: 0.85rem;
   color: #64748b;
 }
