@@ -69,8 +69,8 @@ export const initialUserPermissions = [
 //For system health -> system health
 export const systemData = [
   { type: 'Small Safe', name: 'SafeVault-114', battery: '92%', temp: '22', status: 'Excellent' },
-  { type: 'Big Safe', name: 'SafeVault-109', battery: '35%', temp: '40', status: 'Bad' },
-  { type: 'Big Safe', name: 'SafeVault-109', battery: '68%', temp: '25', status: 'Good' },
+  { type: 'Big Safe', name: 'SafeVault-091', battery: '35%', temp: '40', status: 'Bad' },
+  { type: 'Big Safe', name: 'SafeVault-091', battery: '68%', temp: '25', status: 'Good' },
   { type: 'Small Safe', name: 'SafeVault-114', battery: '85%', temp: '16', status: 'Excellent' },
   { type: 'Pistol Vault', name: 'PistolVault-102', battery: '50%', temp: '28', status: 'Good' },
 ];
