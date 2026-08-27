@@ -33,7 +33,6 @@ const dbConfig: SqlConfig = {
   },
 };
 
-
 export const poolPromise: Promise<ConnectionPool> = new sql.ConnectionPool(dbConfig)
   .connect()
   .then((pool: ConnectionPool) => {
