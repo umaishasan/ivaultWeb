@@ -1,5 +1,6 @@
 import { poolPromise } from './DBKonnection'; // db.ts file ka path
 
+//for run test file use command : npx ts-node src/test.ts
 async function testConnection() {
   try {
     const pool = await poolPromise;
