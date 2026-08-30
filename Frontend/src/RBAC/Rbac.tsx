@@ -1,10 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Rbac.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-import { initialUserPermissions } from '../Model/Model';
+import type { UserPermission } from '../Model/Model';
 
 export function RBACContent() {
-  const [permissions, setPermissions] = useState(initialUserPermissions);
+  var rbacDataUrl = 'http://localhost:5000/api/rbac';
+  const [permissions, setPermissions] = useState<UserPermission[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  //const [permissions, setPermissions] = useState(rbacData); // Initialize state with the imported data
+
+  useEffect(() => {
+    fetch(rbacDataUrl).then((res) => res.json()).then((result) => {
+      if(result.success) {
+        // Backend keys ko frontend format me mapping karein
+        const formattedData = result.data.map((item: any, index: number) => ({
+          id: item.Id || item.id || index,
+          name: item.Name?.trim() || item.name,
+          family: Boolean(item.Family ?? item.family),
+          staff: Boolean(item.Staff ?? item.staff)
+        }));
+        setPermissions(formattedData);
+      }else{
+        console.log("Faild to load data");
+      }
+    }).catch((error) => {
+      console.error('Error fetching RBAC data:', error);
+    }).finally(() => setLoading(false));
+  },[]);
 
   // Toggle handler to make the UI functional
   const handlePermissionChange = (id: number, role: 'family' | 'staff') => {
@@ -50,6 +73,7 @@ export function RBACContent() {
             </thead>
             <tbody className="font-mono">
               {permissions.map((user) => (
+                console.log('Rendering user:', user.id, user.name, user.family, user.staff), // Debug log to check user data
                 <tr key={user.id}>
                   {/* Name cell with left alignment matching the mockup layout */}
                   <td className="col-name" style={{ color: '#ffffff', fontWeight: 500 }}>

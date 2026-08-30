@@ -1,4 +1,4 @@
-//For notification
+//For notification -> Done
 export const initialNotifications = [
   { id: 1, name: 'John', message: 'John Registered', isNew: true },
   { id: 2, name: 'Smith', message: 'Smith Registered', isNew: true },
@@ -6,7 +6,7 @@ export const initialNotifications = [
   { id: 4, name: 'Kim', message: 'Kim Registered', isNew: false },
 ];
 
-//For devices
+//For devices -> Done
 export const initialDevices = [
   { type: 'Big Safe', name: 'SafeVault-091', connectivity: 'Active' },
   { type: 'Small Safe', name: 'SafeVault-114', connectivity: 'Active' },
@@ -53,20 +53,27 @@ export const safeData = [
   { id: 'SafeVault-113', date: '8/17/2023 2:00 PM', status: 'Offline', firmware: 'v2.1.3' },
 ];
 
+//For RBAC -> Done
+// export const initialUserPermissions = [
+//   { id: 1, name: 'John', family: true, staff: false },
+//   { id: 2, name: 'Smith', family: true, staff: false },
+//   { id: 3, name: 'Lauren', family: false, staff: true },
+//   { id: 4, name: 'Kim', family: false, staff: true },
+//   { id: 5, name: 'Yannik', family: false, staff: true },
+//   { id: 6, name: 'Donnal', family: false, staff: true },
+//   { id: 7, name: 'Danny', family: false, staff: true },
+//   { id: 8, name: 'Louis', family: false, staff: true },
+//   { id: 9, name: 'John', family: false, staff: true },
+// ];
 //For RBAC
-export const initialUserPermissions = [
-  { id: 1, name: 'John', family: true, staff: false },
-  { id: 2, name: 'Smith', family: true, staff: false },
-  { id: 3, name: 'Lauren', family: false, staff: true },
-  { id: 4, name: 'Kim', family: false, staff: true },
-  { id: 5, name: 'Yannik', family: false, staff: true },
-  { id: 6, name: 'Donnal', family: false, staff: true },
-  { id: 7, name: 'Danny', family: false, staff: true },
-  { id: 8, name: 'Louis', family: false, staff: true },
-  { id: 9, name: 'John', family: false, staff: true },
-];
+export interface UserPermission {
+  id: number;
+  name: string;
+  family: boolean;
+  staff: boolean;
+}
 
-//For system health -> system health
+//For system health -> system health -> Done
 export const systemData = [
   { type: 'Small Safe', name: 'SafeVault-114', battery: '92%', temp: '22', status: 'Excellent' },
   { type: 'Big Safe', name: 'SafeVault-091', battery: '35%', temp: '40', status: 'Bad' },
@@ -75,12 +82,12 @@ export const systemData = [
   { type: 'Pistol Vault', name: 'PistolVault-102', battery: '50%', temp: '28', status: 'Good' },
 ];
 
-//For system health -> server health
+//For system health -> server health -> Done
 export const serverData = [
   { server: 'Azure Cloud', status: 'Available' }
 ];
 
-//For User
+//For User -> Done
 export const initialUsers = [
   { name: 'John', email: 'john123@gmail.com', deviceType: 'Big Safe', paymentInfo: 'Paid' },
   { name: 'Smith', email: 'Smith@gmail.com', deviceType: 'Big Safe', paymentInfo: 'Trail' }, // Note: Keeping 'Trail' typo as in mock or can be 'Trial'

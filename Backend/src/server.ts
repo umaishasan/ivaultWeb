@@ -1,25 +1,31 @@
 import express from "express";
 import cors from "cors";
-
+import { LoginUser } from "./Controller";
+import { GetUsers } from "./Controller";
+import { GetRbacData } from "./Controller";
 const app = express();
-
 // Allow requests from the frontend dev server and enable credentials
 app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"], credentials: true }));
 app.use(express.json());
 
 app.get("/api/message", (req, res) => {
-    res.json({
-        message: "Hello from Node.js backend!"
-    });
+    res.json({message: "Hello from Node.js backend!"});
 });
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", async(req, res) => {
     const { email, password } = req.body;
-    if(email === "umais@gmail.com" || password === "1234") {
-        return res.status(200).json({success: true,  message: "Successfully login." });
-    }else{
-        return res.status(400).json({success: false,  message: "Invalid credentials." });
-    }
+    const result = await LoginUser(email, password);
+    res.status(result.success ? 200 : 401).json(result);
+});
+
+app.get("/api/users", async (req, res) => {
+    const result = await GetUsers();
+    res.json(result);
+});
+
+app.get("/api/rbac", async (req, res) => {
+    const result = await GetRbacData();
+    res.json(result);
 });
 
 app.listen(5000, () => {

@@ -11,6 +11,7 @@ function Login() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   function togglePasswordVisibility() {
     setShowPassword(!showPassword);
@@ -32,10 +33,11 @@ function Login() {
       console.log('Login attempt:', { email, password });
       console.log('Login response:', data);
 
-      if (respone.ok) {
+      if (respone.ok && data.success && data.data?.length > 0) {
         navigate('/dashboard');
       } else {
         // handle non-OK (e.g., show message) — for now, log
+        setShowError(true);
         console.error('Login failed', data);
       }
     } catch (err) {
@@ -71,6 +73,9 @@ function Login() {
               </div>
             </label>
 
+            {showError && (
+              <label style={{fontSize: 10, color: 'red'}}>Invalid Email or Password</label>
+            )}
             <button type="submit" className="login-button">
               Login
             </button>

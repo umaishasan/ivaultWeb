@@ -1,6 +1,6 @@
 // import sql from 'mssql';
-import sql from 'mssql/msnodesqlv8';
 //import type { config as SqlConfig, ConnectionPool } from 'mssql';
+import sql from 'mssql/msnodesqlv8';
 import type { config as SqlConfig, ConnectionPool } from 'mssql/msnodesqlv8';
 import dotenv from 'dotenv';
 
