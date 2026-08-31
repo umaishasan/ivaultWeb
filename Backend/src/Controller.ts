@@ -23,6 +23,17 @@ export async function GetSysteHealth() {
   }
 }
 
+export async function GetServerAvailability() {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request().query(Queries.SERVER_AVAILABILITY);
+    console.log('Query Result:', result.recordset);
+    return { success: true, data: result.recordset };
+  } catch (err) {
+    return { success: false, error: err };
+  }
+}
+
 export async function GetRbacData(){
   try {
     const pool = await poolPromise;
@@ -52,4 +63,4 @@ export async function LoginUser(email: string, password: string) {
   }
 }
 
-//GetRbacData();
+//GetServerAvailability();

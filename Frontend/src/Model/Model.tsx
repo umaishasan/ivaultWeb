@@ -53,18 +53,6 @@ export const safeData = [
   { id: 'SafeVault-113', date: '8/17/2023 2:00 PM', status: 'Offline', firmware: 'v2.1.3' },
 ];
 
-//For RBAC -> Done
-// export const initialUserPermissions = [
-//   { id: 1, name: 'John', family: true, staff: false },
-//   { id: 2, name: 'Smith', family: true, staff: false },
-//   { id: 3, name: 'Lauren', family: false, staff: true },
-//   { id: 4, name: 'Kim', family: false, staff: true },
-//   { id: 5, name: 'Yannik', family: false, staff: true },
-//   { id: 6, name: 'Donnal', family: false, staff: true },
-//   { id: 7, name: 'Danny', family: false, staff: true },
-//   { id: 8, name: 'Louis', family: false, staff: true },
-//   { id: 9, name: 'John', family: false, staff: true },
-// ];
 //For RBAC
 export interface UserPermission {
   id: number;
@@ -73,19 +61,34 @@ export interface UserPermission {
   staff: boolean;
 }
 
+export interface SystemDataItem {
+  id?: number | string;
+  type: string;
+  deviceModel: string;
+  bettry: string | number;
+  temperature: number;
+  status: string;
+}
+
 //For system health -> system health -> Done
-export const systemData = [
-  { type: 'Small Safe', name: 'SafeVault-114', battery: '92%', temp: '22', status: 'Excellent' },
-  { type: 'Big Safe', name: 'SafeVault-091', battery: '35%', temp: '40', status: 'Bad' },
-  { type: 'Big Safe', name: 'SafeVault-091', battery: '68%', temp: '25', status: 'Good' },
-  { type: 'Small Safe', name: 'SafeVault-114', battery: '85%', temp: '16', status: 'Excellent' },
-  { type: 'Pistol Vault', name: 'PistolVault-102', battery: '50%', temp: '28', status: 'Good' },
-];
+// export const systemData = [
+//   { type: 'Small Safe', name: 'SafeVault-114', battery: '92%', temp: '22', status: 'Excellent' },
+//   { type: 'Big Safe', name: 'SafeVault-091', battery: '35%', temp: '40', status: 'Bad' },
+//   { type: 'Big Safe', name: 'SafeVault-091', battery: '68%', temp: '25', status: 'Good' },
+//   { type: 'Small Safe', name: 'SafeVault-114', battery: '85%', temp: '16', status: 'Excellent' },
+//   { type: 'Pistol Vault', name: 'PistolVault-102', battery: '50%', temp: '28', status: 'Good' },
+// ];
+
+export interface ServerDataItem {
+  id?: number | string;
+  server: string;
+  status: string;
+}
 
 //For system health -> server health -> Done
-export const serverData = [
-  { server: 'Azure Cloud', status: 'Available' }
-];
+// export const serverData = [
+//   { server: 'Azure Cloud', status: 'Available' }
+// ];
 
 //For User -> Done
 export const initialUsers = [
