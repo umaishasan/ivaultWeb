@@ -1,9 +1,12 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import './Device.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-import { initialDevices } from '../Model/Model';
+import type { DeviceConnectDataItem } from '../Model/Model';
 
 export function DeviceContent() {
+  var deviceConnectUrl = 'http://localhost:5000/api/deviceconnection';
+  const [initialDevices, setInitialDevices] = useState<DeviceConnectDataItem[]>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
   const totalPages = Math.ceil(initialDevices.length / rowsPerPage);
@@ -20,6 +23,22 @@ export function DeviceContent() {
     return matchDevice && matchConnectivity;
   });
 
+  useEffect(() => {
+    fetch(deviceConnectUrl).then((res) => res.json()).then((result) => {
+      if(result.success){
+        const formattedData: DeviceConnectDataItem[] = result.data.map((item: any, index: number) => ({
+          type: item.Type,
+          model: item.Model,
+          connectivity: item.Connectivity,
+        }));
+        setInitialDevices(formattedData);
+      }else{
+        console.log("Failed to load data");
+    }
+  }).catch((err) => {
+      console.error('Error fetching RBAC data:', err);
+    }).finally(() => setLoading(false));
+  }, []);
   
   // Connectivity column formatter helper
   const renderConnectivity = (status: string) => {
@@ -88,7 +107,7 @@ export function DeviceContent() {
               {filteredDevices.map((device, index) => (
                 <tr key={index}>
                   <td style={{ color: '#ffffff', fontWeight: 500 }}>{device.type}</td>
-                  <td style={{ color: '#8b94a5' }}>{device.name}</td>
+                  <td style={{ color: '#8b94a5' }}>{device.model}</td>
                   <td>{renderConnectivity(device.connectivity)}</td>
                 </tr>
               ))}

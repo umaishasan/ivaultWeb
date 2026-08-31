@@ -1,24 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './User.css';
 import { CommonPage } from '../CommonPage/CommonPage';
-import { initialUsers } from '../Model/Model';
+import type { UserDataItem } from '../Model/Model';
 
 export function UserContent() {
-    const [currentPage, setCurrentPage] = useState(1);
-    const rowsPerPage = 10;
-    const totalPages = Math.ceil(initialUsers.length / rowsPerPage);
-    const safePage = Math.min(currentPage, totalPages || 1);
-    //const startIndex = (safePage - 1) * rowsPerPage;
-    //const paginatedSafeData = initialUsers.slice(startIndex, startIndex + rowsPerPage);
+  var userDataUrl = 'http://localhost:5000/api/userdata';
+  //const startIndex = (safePage - 1) * rowsPerPage;
+  //const paginatedSafeData = initialUsers.slice(startIndex, startIndex + rowsPerPage);
   const [paymentFilter, setPaymentFilter] = useState('All');
   const [deviceFilter, setDeviceFilter] = useState('All');
-
+  const [initialUsers, setInitialUsers] = useState<UserDataItem[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 10;
+  const totalPages = Math.ceil(initialUsers.length / rowsPerPage);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const [loading, setLoading] = useState<boolean>(true);
   // Multi-filtering logic for Payment Info & Device Type
   const filteredUsers = initialUsers.filter(user => {
     const matchPayment = paymentFilter === 'All' || user.paymentInfo === paymentFilter;
     const matchDevice = deviceFilter === 'All' || user.deviceType === deviceFilter;
     return matchPayment && matchDevice;
   });
+
+  useEffect(() => {
+    fetch(userDataUrl).then((res)=>res.json()).then((result) => {
+      if(result.success) {
+        const formattedData: UserDataItem[] = result.data.map((item: any, index: number) => ({
+          name: item.Name,
+          email: item.Email,
+          deviceType: item.Type,
+          paymentInfo: item.PaymentInfo
+        }));
+        setInitialUsers(formattedData);
+      }else{
+        console.log("Failed to load data");
+      }
+    }).catch((error) => {
+      console.error('Error fetching User data:', error)
+    }).finally(() => setLoading(false));
+  },[]);
 
   return (
     <CommonPage>

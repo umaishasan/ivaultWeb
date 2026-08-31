@@ -1,9 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { GetSysteHealth, LoginUser } from "./Controller";
-import { GetUsers } from "./Controller";
-import { GetRbacData } from "./Controller";
-import { GetServerAvailability } from "./Controller";
+import { GetSysteHealth, GetUserData, LoginUser, GetRbacData, GetServerAvailability, GetDeviceConnection } from "./Controller";
 
 const app = express();
 
@@ -23,11 +20,6 @@ app.post("/api/login", async(req, res) => {
     res.status(result.success ? 200 : 401).json(result);
 });
 
-app.get("/api/users", async (req, res) => {
-    const result = await GetUsers();
-    res.json(result);
-});
-
 app.get("/api/rbac", async (req, res) => {
     const result = await GetRbacData();
     res.json(result);
@@ -43,3 +35,12 @@ app.get("/api/server", async (req, res) => {
     res.json(result);
 });
 
+app.get("/api/userdata", async (req, res) => {
+    const result = await GetUserData();
+    res.json(result);
+}); 
+
+app.get("/api/deviceconnection", async (req, res) => {
+    const result = await GetDeviceConnection();
+    res.json(result);
+});
