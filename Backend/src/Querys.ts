@@ -1,8 +1,9 @@
 export const Queries = {
     LOGIN: "SELECT * FROM [dbo].[Users] WHERE Email = @email AND Password = @password;",
     SYS_HEALTH: "SELECT sh.Id, d.Type, sh.DeviceModel, sh.Bettry, sh.Temperature, sh.Status FROM SystemHealth sh INNER JOIN Device d ON sh.DeviceModel = d.Model;",
-    RBAC_LIST: "SELECT Name, Family, Staff FROM [dbo].[Rbac] r INNER JOIN Users u ON r.UserEmail = u.Email;",
+    RBAC_LIST: "SELECT u.Name, r.UserEmail, r.Family, r.Staff FROM [dbo].[Rbac] r INNER JOIN Users u ON r.UserEmail = u.Email;",
     SERVER_AVAILABILITY: "SELECT [Server],[Status],[Id] FROM [iVault].[dbo].[ServerData]",
     USER_DATA:"SELECT u.Name, u.Email, d.Type, dp.PaymentInfo FROM [iVault].[dbo].[DevicePurchase] dp INNER JOIN [iVault].[dbo].[Users] u ON dp.CustomerId = u.Email INNER JOIN [iVault].[dbo].[Device] d ON dp.DevicesId = d.Model;",
-    DEVICE_CONNECTION:"SELECT dc.Id, d.Type, d.Model, dc.Connectivity FROM [iVault].[dbo].[Device] d INNER JOIN [iVault].[dbo].[DeviceConnection] dc ON dc.DeviceId = d.Model;"
+    DEVICE_CONNECTION:"SELECT dc.Id, d.Type, d.Model, dc.Connectivity FROM [iVault].[dbo].[Device] d INNER JOIN [iVault].[dbo].[DeviceConnection] dc ON dc.DeviceId = d.Model;",
+    RBAC_UPDATE: "UPDATE [dbo].[Rbac] SET Family = @family, Staff = @staff WHERE UserEmail = @email AND Id = @id;",
 }

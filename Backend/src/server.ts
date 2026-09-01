@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { GetSysteHealth, GetUserData, LoginUser, GetRbacData, GetServerAvailability, GetDeviceConnection } from "./Controller";
+import { GetSysteHealth, GetUserData, LoginUser, GetRbacData, GetServerAvailability, GetDeviceConnection, UpdateRoleOfUSer } from "./Controller";
 
 const app = express();
 
@@ -18,6 +18,12 @@ app.post("/api/login", async(req, res) => {
     const { email, password } = req.body;
     const result = await LoginUser(email, password);
     res.status(result.success ? 200 : 401).json(result);
+});
+
+app.put("/api/rbac/update", async (req, res) => {
+    const { id, email, family, staff } = req.body;
+    const result = await UpdateRoleOfUSer(id, email, family, staff);
+    res.status(result.success ? 200 : 400).json(result);
 });
 
 app.get("/api/rbac", async (req, res) => {

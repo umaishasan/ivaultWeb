@@ -5,10 +5,10 @@ import type { UserPermission } from '../Model/Model';
 
 export function RBACContent() {
   var rbacDataUrl = 'http://localhost:5000/api/rbac';
+  var rbacUpdateUrl = 'http://localhost:5000/api/rbac/update';
   const [permissions, setPermissions] = useState<UserPermission[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  //const [permissions, setPermissions] = useState(rbacData); // Initialize state with the imported data
 
   useEffect(() => {
     fetch(rbacDataUrl).then((res) => res.json()).then((result) => {
@@ -30,20 +30,40 @@ export function RBACContent() {
   },[]);
 
   // Toggle handler to make the UI functional
-  const handlePermissionChange = (id: number, role: 'family' | 'staff') => {
+  const handlePermissionChange = async (id: number, role: 'family' | 'staff') => {
+    const currentUser = permissions.find(user => user.id === id);
+    if(!currentUser) return;
+    const newFamily = role === 'family' ? !currentUser.family : false;
+    const newStaff = role === 'staff' ? !currentUser.staff : false;
+
     setPermissions(prev =>
-      prev.map(user => {
-        if (user.id === id) {
-          return {
-            ...user,
-            // Automatically uncheck one when checking the other (standard RBAC behavior)
-            family: role === 'family' ? !user.family : false,
-            staff: role === 'staff' ? !user.staff : false,
-          };
-        }
-        return user;
-      })
+      prev.map(user => user.id === id ? { ...user, family: newFamily, staff: newStaff } : user)
     );
+  };
+
+  const handleSaveChanges = async (id: number, email: string, family: boolean, staff: boolean) => {
+    try{
+      const response = await fetch(rbacUpdateUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          id: id,
+          email: email, 
+          family: family ? 1 : 0, 
+          staff: staff ? 1 : 0,
+        }),
+      });
+      const result = await response.json();
+      if(result.success){
+        console.log(`Successfully updated permissions for ${id}`);
+      }else{
+        console.error(`Failed to update permissions for ${id}:`, result.error);
+      }
+    }catch (err){
+      console.error('Error updating RBAC data:', err);
+    }
   };
 
   return (
@@ -82,8 +102,9 @@ export function RBACContent() {
 
                   {/* Family Checkbox */}
                   <td className="col-center">
-                    <label className="custom-checkbox-container">
+                    <label className="custom-checkbox-container" htmlFor={`family-${user.id}`}>
                       <input
+                        id={`family-${user.id}`}
                         type="checkbox"
                         checked={user.family}
                         onChange={() => handlePermissionChange(user.id, 'family')}
@@ -94,8 +115,9 @@ export function RBACContent() {
 
                   {/* Staff Checkbox */}
                   <td className="col-center">
-                    <label className="custom-checkbox-container">
+                    <label className="custom-checkbox-container" htmlFor={`staff-${user.id}`}>
                       <input
+                        id={`staff-${user.id}`}
                         type="checkbox"
                         checked={user.staff}
                         onChange={() => handlePermissionChange(user.id, 'staff')}

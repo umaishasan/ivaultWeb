@@ -75,4 +75,22 @@ export async function LoginUser(email: string, password: string) {
   }
 }
 
+export async function UpdateRoleOfUSer(id: number, email: string, family: number, staff: number){
+  try{
+    const pool = await poolPromise;
+    const familyVal = family ? 1 : 0; // Convert boolean to 1 or 0
+    const staffVal = staff ? 1 : 0; // Convert boolean to 1 or 0  
+    const result = await pool.request()
+      .input('id', id) // Assuming you have an ID to identify the user, replace with actual ID if needed, 
+      .input('email', email)
+      .input('family', familyVal)
+      .input('staff', staffVal)
+      .query(Queries.RBAC_UPDATE);
+    
+    return { success: true, data: result.recordset };
+  } catch (err) {
+    return { success: false, error: err };
+  }
+}
+
 //GetDeviceConnection();
