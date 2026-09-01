@@ -48,6 +48,12 @@ export interface DeviceConnectDataItem {
 
 //For RBAC
 export interface UserRoleUpdate {
+  id: number;
+  email: string;
+  family: boolean;
+  staff: boolean;
+}
+
 export interface UserPermission {
   id: number;
   name: string;
