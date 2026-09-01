@@ -27,10 +27,12 @@ export function DeviceContent() {
     fetch(deviceConnectUrl).then((res) => res.json()).then((result) => {
       if(result.success){
         const formattedData: DeviceConnectDataItem[] = result.data.map((item: any, index: number) => ({
+          id: item.Id ?? index,
           type: item.Type,
           model: item.Model,
-          connectivity: item.Connectivity,
+          connectivity: item.Connectivity.trim(),
         }));
+        console.log('Raw connectivity values:', result.data.map((i: any) => i.Connectivity));
         setInitialDevices(formattedData);
       }else{
         console.log("Failed to load data");

@@ -4,5 +4,5 @@ export const Queries = {
     RBAC_LIST: "SELECT Name, Family, Staff FROM [dbo].[Rbac] r INNER JOIN Users u ON r.UserEmail = u.Email;",
     SERVER_AVAILABILITY: "SELECT [Server],[Status],[Id] FROM [iVault].[dbo].[ServerData]",
     USER_DATA:"SELECT u.Name, u.Email, d.Type, dp.PaymentInfo FROM [iVault].[dbo].[DevicePurchase] dp INNER JOIN [iVault].[dbo].[Users] u ON dp.CustomerId = u.Email INNER JOIN [iVault].[dbo].[Device] d ON dp.DevicesId = d.Model;",
-    DEVICE_CONNECTION:"SELECT d.Type, d.Model, dc.Connectivity FROM [iVault].[dbo].[Device] d INNER JOIN [iVault].[dbo].[DeviceConnection] dc ON dc.DeviceId = d.Model;"
+    DEVICE_CONNECTION:"SELECT dc.Id, d.Type, d.Model, dc.Connectivity FROM [iVault].[dbo].[Device] d INNER JOIN [iVault].[dbo].[DeviceConnection] dc ON dc.DeviceId = d.Model;"
 }
