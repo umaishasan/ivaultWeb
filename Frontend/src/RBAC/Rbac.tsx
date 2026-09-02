@@ -14,12 +14,13 @@ export function RBACContent() {
     fetch(rbacDataUrl).then((res) => res.json()).then((result) => {
       if(result.success) {
         // Backend keys ko frontend format me mapping karein
-        const formattedData = result.data.map((item: any, index: number) => ({
-          id: item.Id || item.id || index,
+        const formattedData = result.data.map((item: any) => ({
+          id: item.Id ?? item.id,
           name: item.Name?.trim() || item.name,
+          email: item.UserEmail, 
           family: Boolean(item.Family ?? item.family),
           staff: Boolean(item.Staff ?? item.staff)
-        }));
+        })).filter((user: any) => user.id !== undefined && user.id !== null);
         setPermissions(formattedData);
       }else{
         console.log("Faild to load data");
@@ -39,6 +40,9 @@ export function RBACContent() {
     setPermissions(prev =>
       prev.map(user => user.id === id ? { ...user, family: newFamily, staff: newStaff } : user)
     );
+
+     // Phir usi user ki id + email ke sath database update karein
+  await handleSaveChanges(id, currentUser.email, newFamily, newStaff);
   };
 
   const handleSaveChanges = async (id: number, email: string, family: boolean, staff: boolean) => {
@@ -93,7 +97,7 @@ export function RBACContent() {
             </thead>
             <tbody className="font-mono">
               {permissions.map((user) => (
-                console.log('Rendering user:', user.id, user.name, user.family, user.staff), // Debug log to check user data
+                //console.log('Rendering user:', user.id, user.name, user.family, user.staff), // Debug log to check user data
                 <tr key={user.id}>
                   {/* Name cell with left alignment matching the mockup layout */}
                   <td className="col-name" style={{ color: '#ffffff', fontWeight: 500 }}>

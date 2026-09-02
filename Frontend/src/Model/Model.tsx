@@ -56,6 +56,7 @@ export interface UserRoleUpdate {
 
 export interface UserPermission {
   id: number;
+  email: string;
   name: string;
   family: boolean;
   staff: boolean;
