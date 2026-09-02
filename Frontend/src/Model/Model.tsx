@@ -54,6 +54,12 @@ export interface UserRoleUpdate {
   staff: boolean;
 }
 
+export interface LoginAdminData{
+  id: number;
+  name: string;
+  email: string;
+}
+
 export interface UserPermission {
   id: number;
   email: string;

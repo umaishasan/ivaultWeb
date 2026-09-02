@@ -12,6 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Badge from '@mui/material/Badge';
 import logoImg from '../assets/LogoOnly.png';
 import sulogologoImg from '../assets/SulogoLogo.png';
+import type { LoginAdminData } from '../Model/Model';
 
 interface CommonPageProps {
   children?: ReactNode;
@@ -21,13 +22,13 @@ interface CommonPageProps {
 const totalNotificationsCount = 4;
 
 export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTitle: currentPageTitleProp,}) => {
+  var adminDataUrl = 'http://localhost:5000/api/adminlogin';
+  const [adminData, setAdminData] = useState<LoginAdminData[]>([]);
   const navigate = useNavigate(); 
   const location = useLocation(); 
-  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
   // Logout Modal State
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
-
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [readNotificationsCount, setReadNotificationsCount] = useState<number>(() => {
@@ -36,7 +37,6 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
   });
 
   const hasNotifications = totalNotificationsCount > readNotificationsCount;
-
   const pageTitles: Record<string, string> = {
     '/dashboard': 'Dashboard',
     '/devices': 'Devices',
@@ -72,6 +72,23 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    fetch(adminDataUrl)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const formattedData: LoginAdminData[] = result.data.map((item: any) => ({
+            id: item.Id,
+            name: item.Name.trim(),
+            email: item.Email,
+          }));
+          setAdminData(formattedData);
+        } else {
+          console.log("Failed to load admin data");
+        }
+      }).catch((error) => console.error('Error fetching admin data:', error));
   }, []);
 
   const handleDropdownToggle = () => {
@@ -115,12 +132,8 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
           
           <div className="profileWrapper" ref={dropdownRef}>
             <div className="profileInfo" onClick={handleDropdownToggle}>
-              <img 
-                src="https://via.placeholder.com/150" 
-                alt="Profile" 
-                className="avatar" 
-              />
-              <span className="profileName">Super Admin</span>
+              <img alt="Profile" className="avatar"/>
+              <span className="profileName">{adminData.length > 0 ? adminData[0].name : "Guest User"}</span>
             </div>
 
             {isDropdownOpen && (
@@ -171,8 +184,8 @@ export const CommonPage: React.FC<CommonPageProps> = ({ children, currentPageTit
           </div>
 
           <div className="sidebarFooter">
-            <div className="sidebarFooterName">Super Admin</div>
-            <div className="sidebarFooterEmail">admin@safeguard.io</div>
+            <div className="sidebarFooterName">{adminData.length > 0 ? adminData[0].name : "Guest User"}</div>
+            <div className="sidebarFooterEmail">{adminData.length > 0 ? adminData[0].email : ""}</div>
           </div>
         </aside>
 

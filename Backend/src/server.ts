@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { GetSysteHealth, GetUserData, LoginUser, GetRbacData, GetServerAvailability, GetDeviceConnection, UpdateRoleOfUSer } from "./Controller";
+import { GetSysteHealth, GetUserData, LoginUser, GetRbacData, GetServerAvailability, 
+    GetDeviceConnection, UpdateRoleOfUSer, GetAdminData } from "./Controller";
 
 const app = express();
 
@@ -28,6 +29,11 @@ app.put("/api/rbac/update", async (req, res) => {
 
 app.get("/api/rbac", async (req, res) => {
     const result = await GetRbacData();
+    res.json(result);
+});
+
+app.get("/api/adminlogin", async (req, res) => {
+    const result = await GetAdminData();
     res.json(result);
 });
 

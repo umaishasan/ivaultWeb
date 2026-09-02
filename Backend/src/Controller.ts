@@ -57,6 +57,17 @@ export async function GetDeviceConnection(){
   }
 }
 
+export async function GetAdminData(){
+  try{
+    const pool = await poolPromise;
+    const result = await pool.request().query(Queries.ADMIN_DATA);
+    console.log('Query Result:', result.recordset);
+    return { success: true, data: result.recordset };
+  } catch (err){
+    return { success: false, error: err }; 
+  }
+}
+
 export async function LoginUser(email: string, password: string) {
   try {
     const pool = await poolPromise;
@@ -93,4 +104,4 @@ export async function UpdateRoleOfUSer(id: number, email: string, family: number
   }
 }
 
-//GetDeviceConnection();
+GetAdminData();
